@@ -1,0 +1,96 @@
+/* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.chat-container {
+  height: 400px;
+  overflow-y: auto;
+  background-color: #2d2d2d;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+.message {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.message strong {
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.message.user strong {
+  color: #00aaff;
+}
+
+.message.assistant strong {
+  color: #ff9800;
+}
+
+.textarea {
+  width: 100%;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
+  resize: none;
+}
+
+.file-input {
+  margin-top: 15px;
+  color: #ffffff;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.button:hover:enabled {
+  background-color: #0056b3;
+}
