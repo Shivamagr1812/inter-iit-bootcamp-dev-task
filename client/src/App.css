@@ -1,89 +1,116 @@
-/* src/App.css */
+/* General Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #1e1e1e;
-  color: #d4d4d4;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
 }
 
+/* Container Styles */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px;
   text-align: center;
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Title Styles */
 h1 {
   color: #ffffff;
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 25px;
+  font-weight: bold;
+  text-transform: uppercase; /* Make it more impactful */
 }
 
+/* Chat Container Styles */
 .chat-container {
   height: 400px;
   overflow-y: auto;
-  background-color: #2d2d2d;
-  border-radius: 10px;
+  background-color: #252525;
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 25px;
+  transition: box-shadow 0.3s;
+  position: relative; /* Needed for absolute positioning */
 }
 
-.chat-container::-webkit-scrollbar {
-  width: 8px;
+.chat-container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-.chat-container::-webkit-scrollbar-thumb {
-  background-color: #555;
-  border-radius: 10px;
-}
-
+/* Chat Message Styles */
 .message {
+  /* border: 2px solid yellow; */
   margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  line-height: 1.5; /* Improve line spacing */
+}
+
+.message.user {
+  background-color: #007bff22;
+  border-left: 5px solid #007bff; /* Emphasize user messages */
+}
+
+.message.assistant {
+  background-color: #ff980011;
+  border-left: 5px solid #ff9800; /* Emphasize assistant messages */
 }
 
 .message strong {
   margin-right: 10px;
   color: #ffffff;
 }
-
-.message.user strong {
-  color: #00aaff;
+.message span {
+  /* border: 2px solid red; */
+  display: block; 
+  width: 85%;
+  text-align: left; 
+  margin-left: 10px;
 }
 
-.message.assistant strong {
-  color: #ff9800;
-}
 
+/* Text Area Styles */
 .textarea {
-  width: 100%;
+  border: 2px solid green;
+  width: 92%;
   background-color: #2d2d2d;
   color: #ffffff;
   border: none;
   padding: 15px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   outline: none;
   resize: none;
+  transition: background-color 0.3s, border 0.3s;
 }
 
-.file-input {
-  margin-top: 15px;
-  color: #ffffff;
+.textarea:focus {
+  background-color: #3a3a3a;
+  border: 2px solid #007bff;
 }
 
+/* Button Styles */
 .button {
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   margin-top: 15px;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .button:disabled {
@@ -93,4 +120,8 @@ h1 {
 
 .button:hover:enabled {
   background-color: #0056b3;
+}
+
+.button:hover {
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
