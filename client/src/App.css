@@ -71,11 +71,10 @@ h1 {
   margin-right: 10px;
   color: #ffffff;
 }
-.message span {
-  /* border: 2px solid red; */
+.message>span {
   display: block; 
   width: 85%;
-  text-align: left; 
+  text-align: start; 
   margin-left: 10px;
 }
 
@@ -125,3 +124,34 @@ h1 {
 .button:hover {
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
+.code-block {
+  /* background-color: rgba(45,45,45); */
+  position: relative;
+  border-radius: 1em;
+  /* margin-bottom: 1em; Space between code blocks */
+  /* border: 5px solid black; */
+  overflow: hidden;
+}
+
+.copy-button {
+  position: absolute;
+  top: 20px;
+  right: 12px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  /* border: 4px solid black; */
+  border-radius: .75em;
+}
+
+.copy-button:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+
+.code-syntax{
+  border-radius: 1rem;
+}
+
