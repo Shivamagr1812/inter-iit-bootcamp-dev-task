@@ -8,10 +8,26 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  width: 100%;
+  max-width: calc(60vw - 40px);
   margin: 0 auto;
-  padding: 40px;
   text-align: center;
+}
+
+.chatBody {
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  height: 100vh;
+  gap: 20px;
+}
+
+.header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 h1 {
@@ -21,13 +37,14 @@ h1 {
 }
 
 .chat-container {
-  height: 400px;
+  height: 50vh;
   overflow-y: auto;
   background-color: #2d2d2d;
   border-radius: 10px;
-  padding: 20px;
+  padding: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .chat-container::-webkit-scrollbar {
@@ -37,6 +54,16 @@ h1 {
 .chat-container::-webkit-scrollbar-thumb {
   background-color: #555;
   border-radius: 10px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  padding-right: 20px;
+  border-radius: 5px;
 }
 
 .message {
@@ -59,11 +86,13 @@ h1 {
 }
 
 .textarea {
-  width: 100%;
+  width: calc(100% - 40px);
   background-color: #2d2d2d;
   color: #ffffff;
   border: none;
-  padding: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 20px;
   font-size: 16px;
   border-radius: 5px;
   outline: none;
@@ -93,4 +122,38 @@ h1 {
 
 .button:hover:enabled {
   background-color: #0056b3;
+}
+
+.attached {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.record {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.recording {
+  display: flex;
+  align-items: center;
+  background-color: #ff5555;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.attach {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.file-name {
+  color: #999;
 }
