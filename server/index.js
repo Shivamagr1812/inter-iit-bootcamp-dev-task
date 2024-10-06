@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors({
   // origin: 'http://localhost:3000', // Allow requests from your frontend
-  origin: 'https://6702933fe0e04d000834126f--bootcampinteriit.netlify.app/',
+  origin: 'https://bootcampinteriit.netlify.app/',
 }));
 app.use(bodyParser.json());
 
