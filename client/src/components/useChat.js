@@ -7,8 +7,8 @@ const useChat = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const chatEndRef = useRef(null);
-  const backendUrl = 'https://inter-iit-bootcamp-dev-task.onrender.com';
-  // const backendUrl = 'http://localhost:5000';
+  // const backendUrl = 'https://inter-iit-bootcamp-dev-task.onrender.com'; // uncomment before hosting 
+  const backendUrl = 'http://localhost:5000';  // development 
 
   const askQuestion = async () => {
     if (!question.trim()) return;

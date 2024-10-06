@@ -2,16 +2,10 @@ import React, { useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import '../styles/chat.css';
 
-const Chat = ({ conversation, chatEndRef }) => {
-  useEffect(() => {
-    if (chatEndRef && chatEndRef.current) {
-      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [conversation, chatEndRef]); // Added chatEndRef to the dependency array
-
+const Message = ({ msg }) => {
   const formatMessageContent = (content) => {
     const parts = content.split(/(```[\s\S]*?```)/g);
-
+  
     return parts.map((part, index) => {
       if (part.startsWith('```') && part.endsWith('```')) {
         const lang = part.match(/```([a-z]*)/);
@@ -20,20 +14,44 @@ const Chat = ({ conversation, chatEndRef }) => {
         return <CodeBlock key={index} code={code} language={language} />;
       } else {
         const formattedText = part
-          .replace(/`([^`]+)`/g, (match, code) => `<strong>${code}</strong>`)
-          .replace(/\n/g, '<br />');
-        return <p key={index} dangerouslySetInnerHTML={{ __html: formattedText }} />;
+          // Convert bold text
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // **bold**
+          .replace(/\*(.*?)\*/g, '<em>$1</em>') // *italic*
+          // Convert inline code
+          .replace(/`([^`]+)`/g, '<code>$1</code>') // `code`
+          // Convert new lines
+          .replace(/\n/g, '<br />')
+          // Convert list items to <li> tags
+          .replace(/^\*\s+/gm, '<li>').replace(/<\/li>(?=\s*$)/g, '</li><li>') // Allow multiple <li> without <ul>
+          .replace(/<li>(.*?)<\/li>/g, '<ul><li>$1</li></ul>'); // Wrap <li> in <ul>
+        
+        // This div is used to set inner HTML for formatted message
+        return (
+          <div key={index} dangerouslySetInnerHTML={{ __html: formattedText }} />
+        );
       }
     });
   };
+  
+  return (
+    <div className={`message ${msg.role}`}>
+      <strong>{msg.role === 'user' ? 'You' : 'Assistant'}:</strong>
+      <span>{formatMessageContent(msg.content)}</span>
+    </div>
+  );
+};
+
+const Chat = ({ conversation, chatEndRef }) => {
+  useEffect(() => {
+    if (chatEndRef && chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [conversation, chatEndRef]);
 
   return (
     <div className="chat-container">
       {conversation.map((msg, index) => (
-        <div key={index} className={`message ${msg.role}`}>
-          <strong>{msg.role === 'user' ? 'You' : 'Assistant'}:</strong>
-          <span>{formatMessageContent(msg.content)}</span>
-        </div>
+        <Message key={index} msg={msg} />
       ))}
       <div ref={chatEndRef} />
     </div>

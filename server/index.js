@@ -1,10 +1,12 @@
+// index.js
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 
-// routes importing 
+// Routes importing 
 const chatRoutes = require("./routes/chatRoutes");
+const uploadRoutes = require("./routes/upload"); // Import upload routes
 
 const app = express();
 
@@ -14,13 +16,9 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-// Add a root route
-// app.get('/', (req, res) => {
-//   res.send('Welcome to the Chat API!'); // Change this message as needed
-// });
-
 // Chat route 
 app.use("/chat", chatRoutes);
+app.use("/api", uploadRoutes); // Integrate upload routes
 
 // Handle 404 errors for undefined routes
 app.use((req, res) => {
