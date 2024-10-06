@@ -24,7 +24,7 @@ const handleChatWithFile = async (req, res) => {
   const prompt = req.body.prompt;
   const file = req.file;
 
-  const fileManager = new GoogleAIFileManager(process.env.GENAI_API_KEY);
+  const fileManager = new GoogleAIFileManager(process.env.GEMINI_AI_API_KEY);
   // Upload file to API Server
   const uploadResult = await fileManager.uploadFile(`${file.path}`, {
     mimeType: file.mimetype,
@@ -46,7 +46,7 @@ const handleChatWithFile = async (req, res) => {
 
   // Get response for file + prompt
   const model = new GoogleGenerativeAI(
-    process.env.GENAI_API_KEY
+    process.env.GEMINI_AI_API_KEY
   ).getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const result = await model.generateContent([
