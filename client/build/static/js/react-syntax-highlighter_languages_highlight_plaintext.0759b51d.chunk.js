@@ -1,0 +1,2 @@
+(self.webpackChunkgpt4_app=self.webpackChunkgpt4_app||[]).push([[2979],{3577:t=>{t.exports=function(t){return{name:"Plain text",aliases:["text","txt"],disableAutodetect:!0}}}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_highlight_plaintext.0759b51d.chunk.js.map
