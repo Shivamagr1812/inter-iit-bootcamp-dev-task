@@ -17,6 +17,7 @@
   resize: none; /* Disable resizing */
   transition: border-color 0.3s ease; /* Smooth border color transition */
   background-color: #f9f9f9; /* Light background for visibility */
+  height: 50px;
 }
 
 .textarea:focus {

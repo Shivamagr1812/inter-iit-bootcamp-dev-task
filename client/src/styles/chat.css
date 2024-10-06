@@ -2,17 +2,23 @@
 
 /* Chat Container Styles */
 .chat-container {
-    height: 400px;
-    overflow-y: auto;
-    background-color: #252525;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    margin-bottom: 25px;
-    transition: box-shadow 0.3s;
-    position: relative;
-  }
-  
+  height: 580px;
+  overflow: hidden; /* Hide default scrollbar */
+  background-color: #252525;
+  border-radius: 12px;
+  padding: 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+  position: relative;
+  overflow-y: auto; /* Enable vertical scroll */
+}
+
+.chat-scroll-content {
+  height: 100%; /* Full height of the container */
+  padding-right: 15px; /* To avoid content being hidden under the scrollbar */
+}
+
   .chat-container:hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   }
