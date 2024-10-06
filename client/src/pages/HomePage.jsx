@@ -99,7 +99,7 @@ function Home() {
   }, [conversation_data]);
 
   return (
-    <div className="w-[100%] h-[100vh] flex flex-col">
+    <div className="w-[100%] h-screen flex flex-col">
       <Navbar />
       <ConversationSection conversation_data={conversation_data} />
       <InputField addConversation={addConversation} />

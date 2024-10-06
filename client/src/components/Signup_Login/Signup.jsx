@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = "http://localhost:5000/auth";
+const BACKEND_URL = import.meta.VITE_BACKEND_URL;
 
 function Signup() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Signup() {
     console.log(userData);
     try {
       console.log(userData);
-      const response = await fetch(`${BASE_URL}/signup`, {
+      const response = await fetch(`${BACKEND_URL}auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

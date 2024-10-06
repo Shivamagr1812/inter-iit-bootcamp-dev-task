@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/LoginState";
 
-const BASE_URL = "http://localhost:5000/auth";
+const BACKEND_URL = import.meta.VITE_BACKEND_URL;
 
 function Login() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${BASE_URL}/login`, {
+      const response = await fetch(`${BACKEND_URL}auth/login`, {
         method: "POST",
         credentials: "include",
         headers: {
