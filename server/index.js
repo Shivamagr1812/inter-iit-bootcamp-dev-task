@@ -5,20 +5,21 @@ require("dotenv").config();
 
 // routes importing 
 const chatRoutes = require("./routes/chatRoutes");
-// const transcriptionRoutes = require("./routes/transcriptionRoutes");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from your frontend
+}));
 app.use(bodyParser.json());
 
 // Add a root route
-
+app.get('/', (req, res) => {
+  res.send('Welcome to the Chat API!'); // Change this message as needed
+});
 
 // Chat route 
 app.use("/chat", chatRoutes);
-// Transcription route 
-// app.use("/transcription", transcriptionRoutes);
 
 // Handle 404 errors for undefined routes
 app.use((req, res) => {
