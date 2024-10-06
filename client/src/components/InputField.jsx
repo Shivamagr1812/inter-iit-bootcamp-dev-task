@@ -90,7 +90,7 @@ function InputField({ addConversation }) {
   }, [transcript]);
 
   return (
-    <div className="h-[70px] w-full fixed bottom-0 flex justify-center items-center bg-[#131921]">
+    <div className="h-[70px] w-full fixed bottom-0 flex justify-center items-center bg-[#131921] z-[1000]">
       <div className="w-3/4 md:w-1/2 relative flex">
         <div
           className="absolute top-3 -left-8 md:-left-10 text-3xl flex items-center cursor-pointer duration-150  text-gray-300"

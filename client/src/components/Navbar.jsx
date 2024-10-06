@@ -8,7 +8,7 @@ function Navbar() {
   const [isLogoutActive, setisLogoutActive] = useState(false);
 
   return (
-    <div className="w-[100%] h-[55px] fixed top-0 flex items-center justify-between bg-[#0d1117]">
+    <div className="w-[100%] h-[55px] fixed top-0 flex items-center justify-between bg-[#0d1117] z-[1000]">
       <div className="flex items-center justify-center px-8 md:px-20 text-2xl text-gray-300">
         <p
           className="flex items-center justify-center cursor-pointer"
