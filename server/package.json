@@ -8,11 +8,13 @@
     "express": "^4.21.0",
     "fs": "^0.0.1-security",
     "groq-sdk": "^0.7.0",
+    "mammoth": "^1.8.0",
     "multer": "^1.4.5-lts.1",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.7",
     "openai": "^4.63.0",
     "path": "^0.12.7",
+    "pdf-parse": "^1.1.1",
     "stream": "^0.0.3"
   }
 }

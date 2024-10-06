@@ -1,117 +1,7 @@
-/* src/App.css */
-/* body {
+body{
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #1e1e1e;
-  color: #d4d4d4;
 }
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px;
-  text-align: center;
-}
-
-h1 {
-  color: #ffffff;
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #555;
-  border-radius: 10px;
-}
-.chat-container {
-  height: 400px;
-  overflow-y: auto;
-  background-color: #2d2d2d;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
-}
-
-
-
-.message {
-  position: relative;  
-  margin-bottom: 15px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.message strong {
-  margin-right: 10px;
-  color: #ffffff;
-}
-
-.message.user strong {
-  color: #00aaff;
-  
-}
-
-.message.groq strong {
-  
-  color: #ff9800;
-  
-}
-
-.message.user,.message.groq {
-  background-color: gray;
-  border-radius: 15px;
-  padding: 15px;
-  text-align: left;
-}
-
-
-.textarea {
-  width: 100%;
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border: none;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 5px;
-  outline: none;
-  resize: none;
-}
-
-.file-input {
-  margin-top: 15px;
-  color: #ffffff;
-}
-
-.content,strong{
-  white-space: pre-wrap; 
-  word-wrap: break-word; 
-  text-align: left;
-  padding: 10px 0;
-}
-
-.copy-button {
-  
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  margin-left: 10px;
-  cursor: pointer;
-  font-size: 12px;
-  border-radius: 5px;
-}
-
-.copy-button:hover {
-  background-color: #45a049;
-}
-
-*/
 .button {
   background-color: #007bff;
   color: white;
@@ -224,19 +114,6 @@ h1 {
   background: #c8e6c9;
 }
 
-/* Chat image styling for images appearing in chat */
-.chat-image {
-  width: 100px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-/* Container for buttons like copy and read-aloud controls */
-.response-buttons {
-  display: flex;
-  gap: 5px;
-  margin-left: 10px;
-}
 
 .copy-button,
 .voice-control-button {
@@ -269,71 +146,30 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* Input buttons for controlling actions like uploading and asking questions */
-.input-buttons {
-  display: flex;
-  gap: 10px;
-}
 
-.input-buttons input[type="file"] {
-  flex: 1;
-}
 
-.input-buttons button {
-  flex: 1;
-  padding: 10px;
-  font-size: 16px;
+
+/* Styling the label for the file input */
+.custom-file-input {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-right: 20px;
 }
 
-.input-buttons button:hover {
+/* Hide the actual file input */
+.custom-file-input input[type="file"] {
+  display: none;
+}
+
+/* Styling for hover effect on "Choose File" */
+.custom-file-input:hover {
   background-color: #0056b3;
 }
 
-.input-buttons button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Select dropdown for voice options */
-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-/* Styling to indicate loading state for the "Ask" button */
-.loading-button {
-  background-color: #ff9800;
-}
-
-/* Voice button specific styles */
-.voice-button {
-  padding: 5px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4caf50;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.voice-button.pause {
-  background-color: #ff5722;
-}
-
-.voice-button.restart {
-  background-color: #3f51b5;
-}
-
-.voice-button:hover {
-  opacity: 0.9;
-}
 
