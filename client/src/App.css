@@ -1,78 +1,7 @@
 /* src/App.css */
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #1e1e1e;
-  color: #d4d4d4;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px;
-  text-align: center;
-}
-
-h1 {
-  color: #ffffff;
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.chat-container {
-  height: 400px;
-  overflow-y: auto;
-  background-color: #2d2d2d;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
-}
-
-.chat-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.chat-container::-webkit-scrollbar-thumb {
-  background-color: #555;
-  border-radius: 10px;
-}
-
-.message {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.message strong {
-  margin-right: 10px;
-  color: #ffffff;
-}
-
-.message.user strong {
-  color: #00aaff;
-}
-
-.message.assistant strong {
-  color: #ff9800;
-}
-
-.textarea {
-  width: 100%;
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border: none;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 5px;
-  outline: none;
-  resize: none;
-}
-
-.file-input {
-  margin-top: 15px;
-  color: #ffffff;
+  padding: 0; 
 }
 
 .button {
@@ -93,4 +22,123 @@ h1 {
 
 .button:hover:enabled {
   background-color: #0056b3;
+} 
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+.content,strong{
+  white-space: pre-wrap; 
+  word-wrap: break-word; 
+  text-align: left;
+  padding: 10px 0;
+}
+
+
+
+
+/* Container for the chat application */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat container to hold the conversation */
+.chat-container {
+  height: 450px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Styling for individual messages in the chat */
+.message {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.groq {
+  justify-content: flex-start;
+}
+
+.message strong {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.content {
+  display: inline-block;
+  background: #e1f5fe;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user .content {
+  background: #c8e6c9;
+}
+
+
+
+
+
+/* Input section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.input-buttons button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.input-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.input-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

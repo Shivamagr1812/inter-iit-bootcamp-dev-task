@@ -1,22 +1,23 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
-require("dotenv").config();
+const bodyParser = require("body-parser");
+const chatRoute = require('./routes/chatRoute');
+const errorHandler = require('./middlewares/errorHandlers');
 
 // Initialize Express app
 const app = express();
+
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// POST endpoint to handle chat
-app.post("/chat", async (req, res) => {
-  // TODO: Implement the chat functionality
-});
+// Routes
+app.use(chatRoute);
 
-// GET endpoint to handle chat
-app.get("/stream", async (req, res) => {
-  // TODO: Stream the response back to the client
-});
+
+// Error handling middleware
+app.use(errorHandler);
+
 
 // Start the server
 const PORT = process.env.PORT || 5000;
