@@ -5,6 +5,7 @@ const fs = require("fs");
 const handleChat = async (req, res) => {
   // Get Prompt from req.body
   const prompt = req.body.prompt;
+  console.log(prompt);
 
   if (!prompt) {
     return res.status(400).json({ msg: "Provide prompt" });

@@ -107,7 +107,9 @@ function InputField({ addConversation }) {
         <div className="absolute left-6 top-4 text-xl cursor-pointer text-gray-300">
           <div
             className="absolute w-[250px] h-fit py-3 bottom-10 rounded-lg bg-gray-700"
-            style={isFileUploadActive ? { opacity: 1 } : { opacity: 0 }}
+            style={
+              isFileUploadActive ? { display: "inline" } : { display: "none" }
+            }
           >
             <div
               className="flex items-center justify-center gap-2 hover:text-gray-400"
@@ -125,7 +127,7 @@ function InputField({ addConversation }) {
             type="file"
             ref={fileInputRef}
             onChange={handleFile}
-            className="hidden"
+            className="hidden text-xs"
           />
         </div>
         <input
