@@ -18,7 +18,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${BACKEND_URL}auth/login`, {
+      const response = await fetch(`${BACKEND_URL}/auth/login`, {
         method: "POST",
         credentials: "include",
         headers: {

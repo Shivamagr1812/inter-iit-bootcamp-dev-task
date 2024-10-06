@@ -17,7 +17,7 @@ function Signup() {
     console.log(userData);
     try {
       console.log(userData);
-      const response = await fetch(`${BACKEND_URL}auth/signup`, {
+      const response = await fetch(`${BACKEND_URL}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
