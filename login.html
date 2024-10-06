@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form>*{
+    margin-bottom:25px;
+}
+input{
+    border-bottom-color: rgb(101, 21, 89);
+    border-top: none;
+    border-right: none;
+    border-left: none ;
+    border-width: 1px;
+    height:45px;
+    width:300px;
+    font-size: 2.3ch;
+    background: transparent;
+    color: rgb(101, 21, 89) !important;
+}
+button{
+    width:120px;
+    height: 30px;
+    font-size:1.8ch;
+    color: rgb(69, 2, 53);
+    background:none;
+    border-radius: 13px;
+    border-width: 1px;
+    border-color: rgb(246, 228, 200);
+    border-style: ridge;
+    transition: all 0.27s;
+    background: radial-gradient(circle, rgba(192,212,223,0.6756827731092436) 0%, rgba(255,185,221,0.5440301120448179) 0%, rgba(252,240,200,0.555234593837535) 100%);
+}
+button:hover{
+    transform:scale(1.08);
+    background: linear-gradient(0deg, rgba(255,192,238,0.5384278711484594) 0%, rgba(252,247,209,0.5496323529411764) 100%);
+}
+#b{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background: linear-gradient(0deg, rgba(255,233,249,0.5664390756302521) 0%, rgba(252,250,236,0.5804446778711485) 100%);
+    width:400px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 20px 35px -16px rgba(234, 238, 245, 0.676);
+    -moz-box-shadow: 0px 20px 35px -16px rgba(226, 223, 223, 0.678);
+    box-shadow: 0px 20px 35px -16px rgba(255, 255, 255, 0.623);  
+
+}
+h1{
+    color: rgb(101, 21, 89);
+}
+#a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:98vh;
+    width:100%;
+}
+p{
+    align-self: start;
+    margin-bottom: 0px;
+}
+body{
+    overflow-y: hidden;
+}
+</style>
+<body style="background: linear-gradient(0deg, rgba(227,74,185,1) 0%, rgba(252,234,148,1) 100%);">
+    <div id="a">
+        <div id="b">
+        <h1>LOGIN</h1>
+        <form action="/logging" method="POST">
+            <label for="message"></label>
+            <input type="text" id="username" placeholder="Type username" name="username" required>
+            <input type="text" id="password" placeholder="Type password" name="password" required>
+            <!--<input type="submit" value="Submit" id="submit">-->
+            <button type="submit" value="Submit" id="submit" >Login</button>
+            </div> 
+        </form>
+        </div>  
+    </div>
+
+    
+</body>
+</html>
