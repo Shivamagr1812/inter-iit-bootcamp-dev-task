@@ -15,6 +15,9 @@ This project was built using Node.JS and all the dependencies required to run it
 ### Running
 To view the website, run `node index.js` and navigate to [`localhost:3000`](https://localhost:3000).
 
+## Demo
+https://github.com/user-attachments/assets/78b5f5c9-8adc-4a7f-9bf6-bd7819d30281
+
 ---
 
 To view formal documentation, see [this](./documentation.pdf)
