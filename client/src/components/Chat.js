@@ -4,8 +4,10 @@ import '../styles/chat.css';
 
 const Chat = ({ conversation, chatEndRef }) => {
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [conversation]); // Keep only conversation in dependency array
+    if (chatEndRef && chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [conversation, chatEndRef]); // Added chatEndRef to the dependency array
 
   const formatMessageContent = (content) => {
     const parts = content.split(/(```[\s\S]*?```)/g);

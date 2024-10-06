@@ -7,28 +7,38 @@ const InputSection = ({ question, setQuestion, askQuestion, loading }) => {
   const [audioChunks, setAudioChunks] = useState([]);
 
   useEffect(() => {
+    let stream = null;
+
     const initializeMediaRecorder = async () => {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-      setMediaRecorder(recorder);
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const recorder = new MediaRecorder(stream);
+        setMediaRecorder(recorder);
 
-      recorder.ondataavailable = (event) => {
-        setAudioChunks((prev) => [...prev, event.data]);
-      };
+        recorder.ondataavailable = (event) => {
+          setAudioChunks((prev) => [...prev, event.data]);
+        };
 
-      recorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-
-        // Send the audio file to the server for saving
-        sendAudioToServer(audioBlob);
-
-        // Reset audio chunks for the next recording
-        setAudioChunks([]);
-      };
+        recorder.onstop = () => {
+          const chunks = audioChunks;
+          const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+          sendAudioToServer(audioBlob);
+          setAudioChunks([]);
+        };
+      } catch (err) {
+        console.error('Error initializing MediaRecorder:', err);
+        alert('Please allow microphone access to use the voice feature.');
+      }
     };
 
     initializeMediaRecorder();
-  }, []); // Only run on mount
+
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    };
+  }, []); // Run on mount
 
   const startListening = () => {
     if (mediaRecorder) {
