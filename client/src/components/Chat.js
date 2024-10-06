@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import '../styles/chat.css';
+
 const Chat = ({ conversation, chatEndRef }) => {
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [conversation]);
+  }, [conversation]); // Keep only conversation in dependency array
 
   const formatMessageContent = (content) => {
     const parts = content.split(/(```[\s\S]*?```)/g);
