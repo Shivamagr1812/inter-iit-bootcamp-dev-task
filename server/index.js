@@ -9,14 +9,15 @@ const chatRoutes = require("./routes/chatRoutes");
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from your frontend
+  // origin: 'http://localhost:3000', // Allow requests from your frontend
+  origin: 'https://6702933fe0e04d000834126f--bootcampinteriit.netlify.app/',
 }));
 app.use(bodyParser.json());
 
 // Add a root route
-app.get('/', (req, res) => {
-  res.send('Welcome to the Chat API!'); // Change this message as needed
-});
+// app.get('/', (req, res) => {
+//   res.send('Welcome to the Chat API!'); // Change this message as needed
+// });
 
 // Chat route 
 app.use("/chat", chatRoutes);
