@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './App.css';
+import ChatMessage from './chatMessage';
 
 function App() {
   const [question, setQuestion] = useState('');
@@ -10,21 +11,21 @@ function App() {
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
-  // const CopyButton = ({ textToCopy }) => {
-  //   const handleCopy = () => {
-  //     navigator.clipboard.writeText(textToCopy)
-  //       .then(() => {
-  //         alert("Text copied to clipboard!");
-  //       })
-  //       .catch(err => {
-  //         console.error("Failed to copy: ", err);
-  //       });
-  //   };
+  const CopyButton = ({ textToCopy }) => {
+    const handleCopy = () => {
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          alert("Text copied to clipboard!");
+        })
+        .catch(err => {
+          console.error("Failed to copy: ", err);
+        });
+    };
 
-  //   return (
-  //     <button onClick={handleCopy}>Copy to Clipboard</button>
-  //   );
-  // };
+    return (
+      <button onClick={handleCopy}>Copy</button>
+    );
+  };
 
   const askQuestion = async () => {
     if (!question.trim()) return;
@@ -76,8 +77,9 @@ function App() {
         {conversation.map((msg, index) => (
           <div key={index} className={`message ${msg.role}`}>
             <strong>{msg.role === 'user' ? 'You' : 'GPT-4'}:</strong>
-            <span>{msg.content}</span>
-            {/* <CopyButton textToCopy={msg.content} /> */}
+            {/* <span>{msg.content}</span> */}
+            <ChatMessage msg = {msg}/>
+            <CopyButton textToCopy={msg.content} />
           </div>
         ))}
         <div ref={chatEndRef} />
