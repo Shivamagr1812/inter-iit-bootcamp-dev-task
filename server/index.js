@@ -13,9 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Add a root route
-app.get('/', (req, res) => {
-  res.send('Welcome to the Chat API!'); // Change this message as needed
-});
+
 
 // Chat route 
 app.use("/chat", chatRoutes);
