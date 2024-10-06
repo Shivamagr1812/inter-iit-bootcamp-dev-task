@@ -1,0 +1,57 @@
+/* Container for input section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Styles for the textarea input */
+.textarea {
+  width: 100%;
+  max-width: 600px; /* Control the maximum width */
+  padding: 10px;
+  margin-bottom: 10px; /* Space below the textarea */
+  font-size: 16px; /* Readable font size */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none; /* Disable resizing */
+  transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.textarea:focus {
+  border-color: #007BFF; /* Blue border on focus */
+  outline: none; /* Remove the default outline */
+}
+
+/* General button styles */
+.button {
+  padding: 10px 20px; /* Padding for the button */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* No default border */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth color transition */
+  margin: 10px; /* Space between buttons */
+  font-size: 16px; /* Consistent font size for buttons */
+  width: 150px; /* Same width for both buttons */
+}
+
+/* Specific styles for the Ask button */
+.ask-button {
+  background-color: #008CBA; /* Teal background */
+  color: white; /* White text */
+}
+
+.ask-button:hover {
+  background-color: #007B9A; /* Darker teal on hover */
+}
+
+/* Specific styles for the Speech button */
+.speech-button {
+  background-color: #FF5733; /* Orange background */
+  color: white; /* White text */
+}
+
+.speech-button:hover {
+  background-color: #C63922; /* Darker orange on hover */
+}

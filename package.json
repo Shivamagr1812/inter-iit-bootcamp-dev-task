@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@picovoice/cheetah-node": "^2.0.3",
+    "@picovoice/pvrecorder-node": "^1.2.4"
+  }
+}
