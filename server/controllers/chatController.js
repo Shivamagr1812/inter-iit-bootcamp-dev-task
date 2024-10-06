@@ -1,44 +1,36 @@
-const { groq } = require('../config/config');
+const groq = require('../config/config');
+const streamResponse = require('../utils/streamResponse');
 
-// Function to interact with the Groq API and get chat completion
-const getGroqChatCompletion = async (userInput) => {
-  return await groq.chat.completions.create({
-    messages: [
-      {
-        role: "user",
-        content: userInput,
-      },
-    ],
-    model: "llama3-8b-8192",  // Groq model
-  });
-};
+// Controller function to handle chat requests
+async function getGroqChatCompletion(req, res) {
+  const userInput = req.body?.userInput;
 
-const chatHandler = async (req, res) => {
+  if (!userInput) {
+    return res.status(400).json({ error: 'Invalid request body' });
+  }
+
   try {
-    const userInput = req.body?.userInput;
-    console.log('Incoming /chat request:', userInput);
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: "Whenever you provide code in your responses but not text, always specify the programming language after the opening triple backticks (```), like ` ```python `, ` ```cpp `, etc."
+        },
+        {
+          role: "user",
+          content: userInput,  // Use the input received from the client
+        }
+      ],
+      model: "llama3-8b-8192",
+      stream: true,
+    });
 
-    if (!userInput) {
-      return res.status(400).json({ error: 'Invalid request body' });
-    }
-
-    // Call Groq API to get the chat completion
-    const response = await getGroqChatCompletion(userInput);
-
-    // Extract content from the response
-    const content = response?.choices?.[0]?.message?.content;
-    
-    if (!content) {
-      return res.status(500).json({ error: 'Failed to get chat response' });
-    }
-
-    // Send all data at once to the client
-    res.status(200).json({ message: content });
-
+    res.setHeader('Content-Type', 'text/plain'); // Set content type for streaming
+    await streamResponse(chatCompletion, res); // Stream response to the client
   } catch (error) {
-    console.error('Error in chat endpoint:', error);
+    console.error('Error in chat controller:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-};
+}
 
-module.exports = { chatHandler };
+module.exports = { getGroqChatCompletion };
