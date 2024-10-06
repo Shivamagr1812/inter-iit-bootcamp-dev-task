@@ -9,8 +9,8 @@ const chatRoutes = require("./routes/chatRoutes");
 const app = express();
 
 app.use(cors({
-  // origin: 'http://localhost:3000', // Allow requests from your frontend
-  origin: 'https://bootcampinteriit.netlify.app/',
+  origin: 'http://localhost:3000', // Allow requests from your frontend
+  // origin: 'https://bootcampinteriit.netlify.app/',
 }));
 app.use(bodyParser.json());
 
