@@ -1,24 +1,26 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-require("dotenv").config();
+const { fileStorage } = require('./config');
+const { registerUserController, logInUserController, verifyToken } = require("./controllers/authControllers");
+const { chatWithGeminiController } = require("./controllers/chatControllers");
 
-// Initialize Express app
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// POST endpoint to handle chat
-app.post("/chat", async (req, res) => {
-  // TODO: Implement the chat functionality
+app.post('/register', async (req, res) => {
+  registerUserController(req, res);
+})
+
+app.post('/auth', async (req, res) => {
+  logInUserController(req, res);
+})
+
+app.post("/chat", fileStorage.single('file'), async (req, res) => {
+  chatWithGeminiController(req, res);
 });
 
-// GET endpoint to handle chat
-app.get("/stream", async (req, res) => {
-  // TODO: Stream the response back to the client
-});
-
-// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
