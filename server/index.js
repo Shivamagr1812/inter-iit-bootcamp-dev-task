@@ -1,22 +1,29 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-require("dotenv").config();
+const chatRoutes = require('./routes/chatRoutes');
+const errorHandler = require('./middlewares/errorHandler');
+const AuthRoutes = require("./routes/authRoutes");
+require("./db");
 
 // Initialize Express app
 const app = express();
-app.use(cors());
+
+// Middleware
+app.use(cors({
+  origin: 'https://ai-chatbot-lzc3.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
 
-// POST endpoint to handle chat
-app.post("/chat", async (req, res) => {
-  // TODO: Implement the chat functionality
-});
+// Routes
+app.use(chatRoutes);
+app.use(AuthRoutes);
 
-// GET endpoint to handle chat
-app.get("/stream", async (req, res) => {
-  // TODO: Stream the response back to the client
-});
+
+// Error handling middleware
+app.use(errorHandler);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
