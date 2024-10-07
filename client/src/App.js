@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import './App.css';
 import ChatMessage from './chatMessage';
 
+
 function App() {
   const [question, setQuestion] = useState('');
   const [conversation, setConversation] = useState([]);
@@ -10,6 +11,15 @@ function App() {
   const chatEndRef = useRef(null);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+  
+  // const handleFileResponse = (fileName, response) => {
+  //   setConversation((prev) => [
+  //     ...prev,
+  //     { role: 'user', content: `Uploaded file: ${fileName}` },  // Show the file name as the user input
+  //     { role: 'gpt', content: response },  // Show the AI response after processing the file
+  //   ]);
+  //   chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // };
 
   const CopyButton = ({ textToCopy }) => {
     const handleCopy = () => {
@@ -26,50 +36,74 @@ function App() {
       <button onClick={handleCopy}>Copy</button>
     );
   };
-
+  
   const askQuestion = async () => {
     if (!question.trim()) return;
-
+  
     setLoading(true);
-    setError(''); // Reset error state
-
+    setError('');
+    let fullResponse = '';
+  
     try {
-      const res = await fetch(`${backendUrl}/chat`, {
+      // First, send the question via POST request
+      const postRes = await fetch(`${backendUrl}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ question: question }),
       });
-
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
+  
+      if (!postRes.ok) {
+        throw new Error('Failed to send question: Network response was not ok');
       }
-
-      const data = await res.json();
-      console.log('Server response:', data.reply);
-
+  
       setConversation((prev) => [
         ...prev,
         { role: 'user', content: question },
-        { role: 'gpt', content: data.reply },
+        { role: 'gpt', content: '' }
       ]);
+  
+      // Then, stream the response using a GET request
+      const streamRes = await fetch(`${backendUrl}/stream-chat?question=${encodeURIComponent(question)}`, {
+        method: 'GET',
+      });
+  
+      if (!streamRes.ok) {
+        throw new Error('Failed to stream response: Network response was not ok');
+      }
+  
+      const reader = streamRes.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
 
+      while (!done) {
+        const { value, done: readerDone } = await reader.read();
+        done = readerDone;
+        const chunk = decoder.decode(value, { stream: true });
+        fullResponse += chunk;
+  
+        setConversation((prev) => [
+          ...prev.slice(0,-1),
+          { role: 'gpt', content: fullResponse },
+        ]);
+      }
+  
       setQuestion('');
     } catch (error) {
       console.error('Error:', error);
-      setError('An error occurred while fetching the response.'); // Set error message
+      setError('An error occurred while fetching the response.');
     } finally {
       setLoading(false);
       chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
+  
+  
   return (
     <div className="container">
       <h1>Chat with me</h1>
 
-      {/* Error message display */}
       {error && <div className="error-message">{error}</div>}
 
       {/* Chat container */}
@@ -97,6 +131,9 @@ function App() {
       <button className="button" onClick={askQuestion} disabled={loading}>
         {loading ? 'Loading...' : 'Ask'}
       </button>
+      {/* File upload section */}
+      {/* <h2>Upload a file</h2>
+      <FileUpload handleFileResponse={handleFileResponse} /> Include FileUpload here */}
     </div>
   );
 }
