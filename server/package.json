@@ -1,16 +1,25 @@
 {
   "dependencies": {
     "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "express-session": "^1.18.0",
     "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.0",
     "multer": "^1.4.5-lts.1",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.7",
     "openai": "^4.63.0",
     "path": "^0.12.7",
+    "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0",
     "stream": "^0.0.3"
   }
 }
