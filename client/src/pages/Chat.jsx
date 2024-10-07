@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import Text from '../components/Text';
 import FileUpload from '../components/FileUpload';
+import StartVoiceButton from '../components/StartVoiceButton';
 import '../App.css';
 
 const Chat = () => {
@@ -104,10 +105,18 @@ const Chat = () => {
         onChange={(e) => setQuestion(e.target.value)}
       />
       <br />
-      <FileUpload onFileUpload={setUploadedFile} />
-      <button className="button" onClick={askQuestion} disabled={loading}>
-        {loading ? 'Loading...' : 'Ask'}
-      </button>
+      <div className='all-btns'>
+        <FileUpload onFileUpload={setUploadedFile} />
+        <div>
+          <StartVoiceButton setQuestion={setQuestion} question={question} />
+        
+          <button className="button" onClick={askQuestion} disabled={loading}>
+            {loading ? 'Loading...' : 'Ask'}
+          </button>
+        </div>
+        
+      </div>
+      
       
     </div>
   );

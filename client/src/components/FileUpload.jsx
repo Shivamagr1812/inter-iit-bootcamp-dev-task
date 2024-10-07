@@ -38,6 +38,9 @@ const FileUpload = ({ onFileUpload }) => {
     } else {
       console.log('No file is selected.');
       setUploadStatus('Please select a file to upload.');
+      setTimeout(() => {
+        setUploadStatus('');
+      }, 2000);  // 2000 milliseconds = 2 seconds
     }
   };
 
@@ -48,7 +51,7 @@ const FileUpload = ({ onFileUpload }) => {
         Choose File{("<5MB")}
       </label>
       <button className='button' onClick={handleUpload}>Upload File</button>
-      {file && <p>Selected file: {file.name}</p>}  {/* Display the selected file name */}
+      {file && <p className="selected-status">Selected file: {file.name}</p>}  {/* Display the selected file name */}
       
       {uploadStatus && <p className="upload-status">{uploadStatus}</p>} {/* Display the upload status message */}
     </div>

@@ -10,24 +10,29 @@ async function getGroqChatCompletion(req, res) {
   }
 
   const uploadedFile = req.file; // Access the uploaded file if it exists
-    console.log('Incoming /chat req:', userInput, 'Uploaded File:', uploadedFile ? uploadedFile.originalname : 'No file uploaded');
+  console.log('Incoming /chat req:', userInput, 'Uploaded File:', uploadedFile ? uploadedFile.originalname : 'No file uploaded');
 
-    let extractedText = '';
+  let extractedText = '';
 
-    // Check if a file was uploaded
-    if (uploadedFile) {
-      extractedText = await textExtractionService.extractText(uploadedFile);
-    }
+  // Check if a file was uploaded
+  if (uploadedFile) {
+    extractedText = await textExtractionService.extractText(uploadedFile);
+  }
 
-    // Combine user input with extracted text for AI response
-    const combinedInput = userInput ? `${userInput}\n\nExtracted from file:\n${extractedText}` : extractedText;
+
+  // Combine user input with extracted text for AI response
+  let combinedInput = userInput;
+
+  if (uploadedFile && extractedText) {
+    combinedInput += `\n\nExtracted from file:\n${extractedText}`;
+  }
 
   try {
     const chatCompletion = await groq.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: "Whenever you provide code in your responses but not text, always specify the programming language after the opening triple backticks (```), like ` ```python `, ` ```cpp `, etc."
+          content: "Whenever you need to provide code with or without text in your responses, always specify the programming language after the opening triple backticks (```), like ` ```python `, ` ```cpp `, etc."
         },
         {
           role: "user",

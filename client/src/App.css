@@ -10,7 +10,7 @@ body{
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 15px;
+  margin: 10px;
 }
 
 .button:disabled {
@@ -95,6 +95,10 @@ body{
 
 .message.groq {
   justify-content: flex-start;
+  display: flex;
+}
+.message.content {
+  flex-basis: 75%;
 }
 
 .message strong {
@@ -103,15 +107,19 @@ body{
   margin-right: 10px;
 }
 
-.content {
+.groq.content {
   display: inline-block;
   background: #e1f5fe;
   padding: 10px;
   border-radius: 5px;
+  max-width: 640px;
 }
 
-.user .content {
+.user.content {
+  display: inline-block;
   background: #c8e6c9;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 
@@ -148,7 +156,9 @@ body{
 
 
 
-
+.file-upload{
+  display: inline-block;
+}
 /* Styling the label for the file input */
 .custom-file-input {
   background-color: #007bff;
@@ -159,7 +169,7 @@ body{
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 /* Hide the actual file input */
@@ -172,4 +182,24 @@ body{
   background-color: #0056b3;
 }
 
+.selected-status,
+.upload-status{
+  display: inline-block;
+}
+
+
+.read-ai-btn{
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+
+.all-btns {
+  display: flex;
+  align-items: center;  /* Align items vertically centered */
+  justify-content: space-between; /* Push elements to opposite sides */
+  width: 100%; /* Ensure it takes up full width */
+}
 
