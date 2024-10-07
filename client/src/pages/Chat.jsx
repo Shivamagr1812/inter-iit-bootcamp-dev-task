@@ -15,7 +15,7 @@ const Chat = () => {
 
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
-  const backendUrl = 'http://localhost:5000';
+  const backendUrl = 'https://inter-iit-bootcamp-dev-task-dycz.onrender.com';
   console.log(user);
 
  

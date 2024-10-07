@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
 
     },[]) ;
     
-    const backendUrl = 'http://localhost:5000';
+    const backendUrl = 'https://inter-iit-bootcamp-dev-task-dycz.onrender.com';
 
     const login = async (email, password) => {
         try {

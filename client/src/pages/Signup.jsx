@@ -13,7 +13,7 @@ const Signup = () => {
     const handleButton1 = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post('http://localhost:5000/signup', { email, password });
+          const response = await axios.post('https://inter-iit-bootcamp-dev-task-dycz.onrender.com/signup', { email, password });
           console.log(response);
           if(response.data.email){
             setMessage('User Signuped successfully!');
