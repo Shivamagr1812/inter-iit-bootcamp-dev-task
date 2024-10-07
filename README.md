@@ -13,7 +13,7 @@ Integrated the <strong>Gemini</strong> API for chat functionality.<br>
 Created a simple chat interface as the main user interaction point.<br><br>
 <strong>2. Implementing Code Snippets Support</strong><br>
 Integrated highlight.js and used regex expressions to add syntax highlighting for code snippets.<br>
-Added a copy-to-clipboard feature using clipboard.js for easy sharing of code blocks.
+Added a copy-to-clipboard feature for easy sharing of code blocks.
 Ensured proper formatting and display of code blocks in the chat.<br><br>
 <strong>3. Real-Time Streaming of Responses</strong>
 Implemented real-time streaming of Gemini API stream functions .
