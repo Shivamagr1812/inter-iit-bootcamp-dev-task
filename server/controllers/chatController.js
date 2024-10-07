@@ -1,9 +1,12 @@
 const groq = require('../config/config');
 const streamResponse = require('../utils/streamResponse');
 const textExtractionService = require('../utils/textExtraction');
+const User = require('../models/user'); // Adjust the path to your User model
+const mongoose = require('mongoose');
 // Controller function to handle chat requests
 async function getGroqChatCompletion(req, res) {
   const userInput = req.body?.userInput;
+  const userId = req.params;
 
   if (!userInput) {
     return res.status(400).json({ error: 'Invalid request body' });
@@ -42,9 +45,15 @@ async function getGroqChatCompletion(req, res) {
       model: "llama3-8b-8192",
       stream: true,
     });
-
+    // Prepare AI's response
+    let aiResponse = '';
     res.setHeader('Content-Type', 'text/plain'); // Set content type for streaming
-    await streamResponse(chatCompletion, res); // Stream response to the client
+    // await streamResponse(chatCompletion, res); // Stream response to the client
+
+
+    // Stream response to the client
+    await streamResponse(chatCompletion, res);
+
   } catch (error) {
     console.error('Error in chat controller:', error);
     res.status(500).json({ error: 'Internal Server Error' });
