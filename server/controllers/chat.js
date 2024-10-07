@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 //const Chat = require("./model/chatModel");
 
 
-const express = require("express");
+// const express = require("express");
 const Chat = require("../model/chatModel");
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 

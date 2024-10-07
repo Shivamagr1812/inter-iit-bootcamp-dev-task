@@ -3,13 +3,13 @@ const userModel = require('../model/userModel');
 
 
 const express = require('express');
-const router = express.Router();
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const jwtSecret ="pokemonGoCharizard";
 
 
-const{body,validationResult}=require('express-validator');
+const{validationResult}=require('express-validator');
 
 
 
