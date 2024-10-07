@@ -3,7 +3,9 @@ import { useAuth } from "../context/LoginState";
 import { RiEdgeNewLine } from "react-icons/ri";
 import { RiMenu2Line } from "react-icons/ri";
 
-function Sidebar({ chatHistory }) {
+function Sidebar({ setConversation }) {
+  const [chatHistory, setChatHistory] = useState([]);
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const { isLoggedIn } = useAuth();
   const navWidth = {
     max: "280px",
@@ -28,10 +30,42 @@ function Sidebar({ chatHistory }) {
     };
   }, []);
 
-  return (
+  const handleSetConversation = (index) => {
+    setConversation(chatHistory[index]);
+  };
+
+  // Fetch chat history
+  useEffect(() => {
+    const getChatHistory = async () => {
+      try {
+        const response = await fetch(`${BACKEND_URL}/user/chatHistory`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        });
+
+        const result = await response.json();
+        const temp = [];
+
+        result.forEach((chat) => {
+          const message = chat.messages;
+          temp.push(message);
+        });
+
+        setChatHistory(temp);
+        console.log(temp);
+      } catch (error) {
+        console.log("Network Error in fetching chatHistory");
+      }
+    };
+
+    getChatHistory();
+  }, []);
+
+  return isLoggedIn ? (
     <div
       className="min- h-screen fixed top-0 duration-[450ms] bg-gray-800 text-gray-300 text-2xl font-poppins 
-      z-50"
+      z-[2000]"
       style={{ width: navOpen ? navWidth.max : navWidth.min }}
       ref={sidebarRef}
     >
@@ -69,17 +103,21 @@ function Sidebar({ chatHistory }) {
             <div className="border-b border-white">
               <p className="px-4 py-3">Chat History</p>
             </div>
-            <div className="max-h-[84%]  px-4 pt-4 text-[1.1rem] flex gap-4 flex-col overflow-auto">
+            <div className="max-h-[84%]  px-2 pt-4 text-[1.1rem] flex gap-4 flex-col overflow-auto">
               {chatHistory.length === 0 ? (
                 <p className="text-gray-500">Chat history will be shown here</p>
               ) : (
                 chatHistory.map((chat, index) => {
                   return (
-                    <div key={index} className="">
-                      {chat.length > 30 ? (
-                        <p>{chat.substring(0, 25) + "..."}</p>
+                    <div
+                      key={index}
+                      className="hover:bg-gray-900 duration-75 cursor-pointer px-2 py-1 rounded-md"
+                      onClick={() => handleSetConversation(index)}
+                    >
+                      {chat[0].content.length > 30 ? (
+                        <p>{chat[0].content.substring(0, 25) + "..."}</p>
                       ) : (
-                        <p>{chat}</p>
+                        <p>{chat[0].content}</p>
                       )}
                     </div>
                   );
@@ -90,7 +128,7 @@ function Sidebar({ chatHistory }) {
         ) : null}
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default Sidebar;

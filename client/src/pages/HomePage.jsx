@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import ConversationSection from "../components/ConversationSection";
 import InputField from "../components/InputField";
 import { useAuth } from "../context/LoginState";
+import Sidebar from "../components/Sidebar";
 
 function Home() {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -34,6 +35,10 @@ function Home() {
     }
   }
 
+  function setConversation(convo) {
+    setConversation_data(convo);
+  }
+
   // To get backend response
   useEffect(() => {
     if (
@@ -45,36 +50,42 @@ function Home() {
 
       // Function to get response from a prompt
       async function getResponse(prompt) {
-        const response = await fetch(`${BACKEND_URL}/chat`, {
-          method: "POST",
-          body: JSON.stringify({
-            prompt: prompt,
-            sessionToken: sessionStorage.getItem("sessionToken"),
-          }),
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-        });
+        try {
+          const response = await fetch(`${BACKEND_URL}/chat`, {
+            method: "POST",
+            body: JSON.stringify({
+              prompt: prompt,
+              sessionToken: sessionStorage.getItem("sessionToken"),
+            }),
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+          });
 
-        const result = await response.json();
-        const convo = await result.response;
+          const result = await response.json();
+          const convo = await result.response;
 
-        const temp = {
-          role: "ai",
-          content: convo,
-        };
-        addConversation(temp);
+          const temp = {
+            role: "ai",
+            content: convo,
+          };
+          addConversation(temp);
+        } catch (error) {
+          console.log("Network Error");
+        }
       }
       // Function to get response if file included with request
       async function getResponseWithFile(msg) {
         const formData = new FormData();
         formData.append("file", msg.file);
         formData.append("prompt", msg.content);
+        formData.append("sessionToken", sessionStorage.getItem("sessionToken"));
 
         try {
           // Send the form data to backend
           const response = await fetch(`${BACKEND_URL}/chat/file`, {
             method: "POST",
             body: formData,
+            credentials: "include",
           });
 
           if (response.ok) {
@@ -106,6 +117,7 @@ function Home() {
 
   return (
     <div className="w-[100%] h-screen flex flex-col">
+      <Sidebar setConversation={setConversation} />
       <Navbar />
       <ConversationSection conversation_data={conversation_data} />
       <InputField addConversation={addConversation} />

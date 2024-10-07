@@ -29,7 +29,7 @@ app.get("/test", (req, res) => {
   console.log("Test route is working fine");
   res.json({ msg: "This is a test response from server" });
 });
-// app.use("/user", userRoute);
+app.use("/user", userRoute);
 // app.use("/stream", streamRoute);
 
 module.exports = app;

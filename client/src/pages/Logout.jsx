@@ -5,7 +5,7 @@ import { useAuth } from "../context/LoginState";
 function Logout() {
   const navigate = useNavigate();
   const { logout } = useAuth();
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(3);
 
   useEffect(() => {
     let timer = null;
