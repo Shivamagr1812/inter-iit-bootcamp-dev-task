@@ -1,5 +1,6 @@
 # VenusX : AI-Powered Chat Website<br>
 ## <a href = "https://interiitps-frontend.onrender.com/">VenusX</a><br>
+### By Dhruv Pansuriya and Pranjal
 This project is part of the <strong>InterIIT 13.0 TechMeet BootCamp 2024-25</strong>. The goal is to build a feature-rich chat website using the OpenAI API, incorporating several key functionalities like code snippet support, file uploads, voice chat, user authentication, chat history preservation, and deployment.
 
 Process Documentation<br>
