@@ -1,26 +1,23 @@
-# Inter IIT Bootcamp Dev Task
+# Gemini Chatbot
+Your digital assistant, always ready to help.
 
-## Setup
-- Clone the repository
-- To start client, run the following commands
-```bash
-cd client
-npm install
-npm start
-```
-- To start server, run the following commands
-```bash
-cd server
-npm install
-npx nodemon index.js
-```
+## Purpose
+This project was developed for a hackathon with the goal of creating a functional chatting website using the Gemini API. The platform supports real-time communication between user and Gemini, file uploads, and features such as document summarization and question-answering using AI
 
-## Usage
-- Generate an API key from any AI model provider (Gemini, Groq, etc.)
-- Add the API key in the `server/.env` file
-- Call the API in the index.js file to get the response
-- Display the response in the client
+## Build
+### Environment Setup
+First, set the `GOOGLE_API_KEY` variable in your environment to your Google Gemini API token that can be obtained from [here](https://ai.google.dev/gemini-api/docs/api-key).
+Then, create a MongoDB cluster following the instructions on [this](https://www.mongodb.com/docs/guides/atlas/cluster/) page, then obtain your connection string (see [this](https://www.mongodb.com/docs/guides/atlas/connection-string/)) and export it to the `MONGODB_CLUSTER` environment variable.
 
-## References
-- [Gemini API](https://ai.google.dev/gemini-api/docs)
-- [Groq API](https://console.groq.com/docs/quickstart)
+### Dependencies
+This project was built using Node.JS and all the dependencies required to run it can be installed by running `npm i`.
+
+### Running
+To view the website, run `node index.js` and navigate to [`localhost:3000`](https://localhost:3000).
+
+## Demo
+https://github.com/user-attachments/assets/78b5f5c9-8adc-4a7f-9bf6-bd7819d30281
+
+---
+
+To view formal documentation, see [this](./documentation.pdf)
