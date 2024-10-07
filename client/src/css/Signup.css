@@ -1,0 +1,70 @@
+/* Overall container for the signup page */
+.app-container {
+	display: flex;
+	flex-direction: row;
+	min-height: 100vh;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+/* Styling for the signup form */
+.signup-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	flex-grow: 1;
+	background-color: #f4f4f4; /* Light gray background */
+}
+
+.signup-form h2 {
+	color: #333; /* Dark gray color for the text */
+	margin-bottom: 20px;
+}
+
+.signup-form input[type='text'],
+.signup-form input[type='email'],
+.signup-form input[type='password'],
+.signup-form input[type='date'] {
+	width: 80%; /* Relative width to the parent container */
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 2px solid #ccc; /* Light gray border */
+	border-radius: 4px; /* Rounded borders */
+	font-size: 16px; /* Larger font size for better readability */
+}
+
+.signup-form button {
+	width: 80%;
+	padding: 10px;
+	font-size: 16px;
+	color: white;
+	background-color: #4caf50; /* Green background for the button */
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+	background-color: #45a049; /* Darker shade of green for hover effect */
+}
+
+/* Responsive adjustments can be added if needed */
+@media (max-width: 600px) {
+	.app-container {
+		flex-direction: column;
+	}
+
+	.signup-form input[type='text'],
+	.signup-form input[type='email'],
+	.signup-form input[type='password'],
+	.signup-form input[type='date'],
+	.signup-form button {
+		width: 90%; /* Increase width in smaller screens */
+	}
+}
