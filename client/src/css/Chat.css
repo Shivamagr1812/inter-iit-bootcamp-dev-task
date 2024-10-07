@@ -1,0 +1,222 @@
+body {
+     margin: 0;
+     padding: 0;
+     font-family: 'Arial', sans-serif;
+     background-color: #1e1e1e;
+     color: #d4d4d4;
+   }
+   
+   .container {
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 40px;
+     text-align: center;
+   }
+   
+   h1 {
+     color: #ffffff;
+     font-size: 36px;
+     margin-bottom: 20px;
+     margin-left: auto;
+   }
+   
+   .chat-container {
+     width: 99%;
+     height: 400px;
+     overflow-y: auto;
+     background-color: #2d2d2d;
+     border-radius: 10px;
+     padding: 20px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+     margin-bottom: 20px;
+   }
+   
+   .chat-container::-webkit-scrollbar {
+     width: 8px;
+   }
+   
+   .chat-container::-webkit-scrollbar-thumb {
+     background-color: #555;
+     border-radius: 10px;
+   }
+   
+   .message {
+     margin-bottom: 15px;
+     display: flex;
+     align-items: flex-start;
+     white-space: pre-wrap;
+   }
+   
+   .message strong {
+     margin-right: 10px;
+     color: #ffffff;
+   }
+   
+   .message.user strong {
+     color: #00aaff;
+   }
+   
+   .message.assistant strong {
+     color: #ff9800;
+   }
+   
+   .textarea {
+     width: 100%;
+     background-color: #2d2d2d;
+     color: #ffffff;
+     border: none;
+     padding: 15px;
+     font-size: 16px;
+     border-radius: 5px;
+     outline: none;
+     resize: none;
+   }
+   
+   .file-input {
+     margin-top: 15px;
+     color: #ffffff;
+   }
+   
+   .button {
+     background-color: #007bff;
+     color: white;
+     padding: 10px 20px;
+     font-size: 16px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     margin-top: 15px;
+   }
+   
+   .button:disabled {
+     background-color: #555;
+     cursor: not-allowed;
+   }
+   
+   .button:hover:enabled {
+     background-color: #0056b3;
+   }
+
+   .logout {
+    background-color: transparent; /* Transparent background */
+    color: #007bff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #007bff; /* Add solid border */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto; /* Pushes the button to the right in flexbox layout */
+    display: inline-block;
+  }
+  
+  .logout:hover {
+    background-color: #007bff; /* Change background on hover */
+    color: #fff; /* Optional: Change text color on hover */
+  }
+
+  .parent-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns child elements to the right */
+    align-items: center;
+  }
+   
+   .buttons {
+    display: flex;
+    margin-left: 10px;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+   }
+
+   .copy-button , .text-to-speech {
+    padding: 1px;
+   }
+   
+   .copy-button:hover , .text-to-speech:hover {
+      background-color: #ffffff23;
+   }
+
+   .messageBoxStyle {
+     margin: '10px 0';
+     padding: '10px';
+     border: '1px solid green';
+     border-radius: '5px';
+     position: 'absolute';
+   };
+   
+   .file-preview {
+     position: relative;
+     bottom: 100px; /* Adjust this to make it float above the textarea */
+     left: auto;
+     background-color: #f9f9f9; /* Light background color for the box */
+     border: 1px solid #ddd; /* Border to define the box */
+     border-radius: 5px; /* Rounded corners */
+     padding: 10px; /* Padding inside the box */
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+     z-index: 10;
+     display: flex;
+     justify-content: space-between; /* Space between filename and download link */
+     align-items: center; /* Center align items vertically */
+     width: calc(100% - 40px); /* Full width minus padding */
+   }
+   
+   .file-preview span {
+     font-weight: bold; /* Make the filename bold */
+     color: #333; /* Dark color for readability */
+   }
+   
+   .file-download-link {
+     text-decoration: none; /* No underline for the link */
+     color: #007bff; /* Blue color for the link */
+     font-weight: normal; /* Normal font weight */
+     padding: 5px 10px; /* Padding around the link */
+     border: 1px solid #007bff; /* Border around the link */
+     border-radius: 4px; /* Rounded corners for the link */
+     transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+   }
+   
+   .file-download-link:hover {
+     background-color: #007bff; /* Change background on hover */
+     color: #fff; /* Change text color on hover */
+   }
+   
+.input-container {
+     position: relative;
+     margin-top: 10px; /* Space above the input container */
+}
+
+.file-preview-chat {
+  position: relative;
+  left: auto;
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Padding inside the box */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between filename and download link */
+  align-items: center; /* Center align items vertically */
+  width: calc(100%); /* Full width minus padding */
+}
+
+.file-preview-chat span {
+  font-weight: bold; /* Make the filename bold */
+  color: #c5c5c5; /* Dark color for readability */
+}
+
+.file-download-link-chat {
+  text-decoration: none; /* No underline for the link */
+  color: #007bff; /* Blue color for the link */
+  font-weight: normal; /* Normal font weight */
+  padding: 5px 10px; /* Padding around the link */
+  border: 1px solid #007bff; /* Border around the link */
+  border-radius: 4px; /* Rounded corners for the link */
+  transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+}
+
+.file-download-link-chat:hover {
+  background-color: #007bff; /* Change background on hover */
+  color: #fff; /* Change text color on hover */
+}
+   
+   
