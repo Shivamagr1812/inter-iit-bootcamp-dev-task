@@ -1,48 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './App.css';
+import { Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import SignUp from "./pages/signup/SignUp";
+import { Toaster } from "react-hot-toast";
+import { useAuthContext } from "./context/AuthContext";
+import React from "react";
 
 function App() {
-  const [question, setQuestion] = useState('');
-  const [conversation, setConversation] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const chatEndRef = useRef(null);
-
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-
-  // Function to submit question to the server
-  const askQuestion = async () => {
-    // TODO: Implement the function to send the question to the server
-  };
-
-  return (
-    <div className="container">
-      <h1>Chat with me</h1>
-
-      {/* Chat container */}
-      <div className="chat-container">
-        {conversation.map((msg, index) => (
-          <div key={index} className={`message ${msg.role}`}>
-            <strong>{msg.role === 'user' ? 'You' : 'GPT-4'}:</strong>
-            <span>{msg.content}</span>
-          </div>
-        ))}
-        <div ref={chatEndRef} />
-      </div>
-
-      {/* Input section */}
-      <textarea
-        className="textarea"
-        rows="4"
-        placeholder="Ask a question..."
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-      />
-      <br />
-      <button className="button" onClick={askQuestion} disabled={loading}>
-        {loading ? 'Loading...' : 'Ask'}
-      </button>
-    </div>
-  );
+	const { authUser } = useAuthContext();
+	return (
+		<div className='p-4 h-screen flex items-center justify-center'>
+			<Routes>
+				<Route path='/' element={authUser ? <Home /> : <Navigate to={"/login"} />} />
+				<Route path='/login' element={authUser ? <Navigate to='/' /> : <Login />} />
+				<Route path='/signup' element={authUser ? <Navigate to='/' /> : <SignUp />} />
+			</Routes>
+			<Toaster />
+		</div>
+	);
 }
 
 export default App;
