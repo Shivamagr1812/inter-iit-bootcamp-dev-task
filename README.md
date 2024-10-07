@@ -24,3 +24,7 @@ npx nodemon index.js
 ## References
 - [Gemini API](https://ai.google.dev/gemini-api/docs)
 - [Groq API](https://console.groq.com/docs/quickstart)
+
+
+## Live website
+- https://ai-chatbot-lzc3.onrender.com
