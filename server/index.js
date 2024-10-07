@@ -1,25 +1,35 @@
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const multer = require("multer");
 require("dotenv").config();
+const mongoose = require('mongoose');
+const userRouter = require("./routes/userRoutes");
+const chatRouter = require("./routes/chatRoutes");
 
-// Initialize Express app
+
+mongoose.connect('mongodb+srv://krish12252005:UwIun5sfWpiQs9jr@krish-cluster.vn4ka9f.mongodb.net/chat-app')
+.then(console.log('mongoose is connected'))
+.catch((e)=>console.log(e));
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// POST endpoint to handle chat
-app.post("/chat", async (req, res) => {
-  // TODO: Implement the chat functionality
-});
 
-// GET endpoint to handle chat
-app.get("/stream", async (req, res) => {
-  // TODO: Stream the response back to the client
-});
 
-// Start the server
+
+app.use('/user',userRouter);
+app.use('/',chatRouter);
+
+
+
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
+
+
+
+
