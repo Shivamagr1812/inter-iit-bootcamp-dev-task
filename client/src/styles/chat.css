@@ -1,0 +1,58 @@
+/* Chat.css */
+
+/* Chat Container Styles */
+.chat-container {
+  height: 580px;
+  overflow: hidden; /* Hide default scrollbar */
+  background-color: #252525;
+  border-radius: 12px;
+  padding: 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+  position: relative;
+  overflow-y: auto; /* Enable vertical scroll */
+}
+
+.chat-scroll-content {
+  height: 100%; /* Full height of the container */
+  padding-right: 15px; /* To avoid content being hidden under the scrollbar */
+}
+
+  .chat-container:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Chat Message Styles */
+  .message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    line-height: 1.5;
+  }
+  
+  .message.user {
+    background-color: #007bff22;
+    border-left: 5px solid #007bff;
+  }
+  
+  .message.assistant {
+    background-color: #ff980011;
+    border-left: 5px solid #ff9800;
+  }
+  
+  .message strong {
+    margin-right: 10px;
+    color: #ffffff;
+  }
+  
+  .message > span {
+    display: block;
+    width: 85%;
+    text-align: start;
+    margin-left: 10px;
+  }
+  

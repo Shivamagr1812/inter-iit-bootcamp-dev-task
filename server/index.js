@@ -1,24 +1,36 @@
+// index.js
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 
-// Initialize Express app
+// Routes importing 
+const chatRoutes = require("./routes/chatRoutes");
+const uploadRoutes = require("./routes/upload"); // Import upload routes
+
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://bootcampinteriit.netlify.app'], // Allow both localhost and hosted frontend
+}));
+
 app.use(bodyParser.json());
 
-// POST endpoint to handle chat
-app.post("/chat", async (req, res) => {
-  // TODO: Implement the chat functionality
+// Chat route 
+app.use("/chat", chatRoutes);
+app.use("/api", uploadRoutes); // Integrate upload routes
+
+// Handle 404 errors for undefined routes
+app.use((req, res) => {
+  res.status(404).json({ message: 'Endpoint not found' });
 });
 
-// GET endpoint to handle chat
-app.get("/stream", async (req, res) => {
-  // TODO: Stream the response back to the client
+// Handle errors globally
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: 'Internal Server Error' });
 });
 
-// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

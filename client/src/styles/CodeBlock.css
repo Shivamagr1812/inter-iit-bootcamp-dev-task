@@ -1,0 +1,41 @@
+.code-block{
+    /* border: 2px solid blue ; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    text-align: start;
+}
+.copy-button{
+    border: 2px solid red;
+}
+/* CodeBlock.css */
+
+/* Code block container */
+.code-block {
+    position: relative;
+    border-radius: 1em;
+    overflow: hidden;
+  }
+  
+  /* Copy button styles */
+  .copy-button {
+    position: absolute;
+    top: 20px;
+    right: 12px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 0.75em;
+  }
+  
+  .copy-button:hover {
+    background-color: #45a049; /* Darker green */
+  }
+  
+  /* Code syntax */
+  .code-syntax {
+    border-radius: 1rem;
+  }
+  
