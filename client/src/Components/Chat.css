@@ -1,0 +1,197 @@
+/* General Styles */
+body, .chat-container {
+  background-color: #181C14;
+  color: #ECDFCC;
+}
+
+h1 {
+  color: #C8ACD6;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2E236C;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  padding-bottom: 50px;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.chat-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background-color: #C8ACD6;
+  border-radius: 5px;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.message.user {
+  background-color: #697565;
+  color: #ECDFCC;
+  align-self: flex-end;
+}
+
+.message.ai {
+  background-color: #3C3D37;
+  color: #ECDFCC;
+  align-self: flex-start;
+}
+
+.message span {
+  background-color: #2E236C;
+  padding: 10px 15px;
+  border-radius: 10px;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.message.user span {
+  color: #C8ACD6;
+}
+
+.message.ai span {
+  background-color: #433D8B;
+  color: #FFFFFF;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3C3D37;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+textarea {
+  width: 75%;
+  background-color: #2E236C;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  resize: none;
+}
+
+textarea:focus {
+  background-color: #433D8B;
+}
+
+.file-upload-icon, .audio-upload-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #C8ACD6;
+  transition: color 0.3s ease;
+}
+
+.file-upload-icon {
+  margin-right: 20px;
+}
+
+.audio-upload-icon {
+  margin-left: 20px;
+}
+
+.file-upload-icon:hover,
+.audio-upload-icon:hover {
+  color: #FFFFFF;
+}
+
+.file-info, .audio-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2E236C;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.remove-file-button {
+  background-color: transparent;
+  color: #ff4d4d;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.remove-file-button:hover {
+  color: #ff1a1a;
+}
+
+button {
+  background-color: #C8ACD6;
+  color: #2E236C;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  width: 150px;
+  align-self: flex-end;
+}
+
+button:hover {
+  background-color: #FFFFFF;
+  color: #2E236C;
+}
+
+.code-snippet {
+  background-color: #2E236C;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+.code-snippet button {
+  background-color: #ff4d4d;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.code-snippet button:hover {
+  background-color: #ff1a1a;
+}
+
+.code-container {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
