@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 // create a context
 const AuthContext = createContext();
@@ -13,6 +14,9 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(true);
 
     if (userData) {
+      const newSessionToken = uuidv4();
+
+      sessionStorage.setItem("sessionToken", newSessionToken);
       setUser(userData);
       localStorage.setItem("user", JSON.stringify(userData));
     }
@@ -24,6 +28,7 @@ export const AuthProvider = ({ children }) => {
 
     setUser(null);
     localStorage.removeItem("user");
+    sessionStorage.removeItem("sessionToken");
   };
 
   // check if user already logged in when page loads
@@ -33,6 +38,17 @@ export const AuthProvider = ({ children }) => {
     if (savedUser) {
       setIsLoggedIn(true);
       setUser(JSON.parse(savedUser));
+
+      // Check for already existing sessionToken
+      const sessionToken = sessionStorage.getItem("sessionToken");
+
+      // No sessionToken found - generate new
+      if (!sessionToken) {
+        const newSessionToken = uuidv4();
+
+        sessionStorage.setItem("sessionToken", newSessionToken);
+        console.log("sessionToken generated successfully");
+      }
     }
   }, []);
 

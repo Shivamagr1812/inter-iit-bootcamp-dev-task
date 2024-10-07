@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    history: [
+    chats: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Chat",

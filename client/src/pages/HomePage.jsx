@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ConversationSection from "../components/ConversationSection";
 import InputField from "../components/InputField";
+import { useAuth } from "../context/LoginState";
 
 function Home() {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const { isLoggedIn } = useAuth();
+
   const [conversation_data, setConversation_data] = useState([
     {
       role: "ai",
@@ -15,8 +18,8 @@ function Home() {
   // Function to add 'msg' to 'conversation_data'
   function addConversation(msg) {
     let temp = [];
-
     // If user has given some prompt with/without file
+    console.log(msg);
     if (msg.content.length > 0) {
       temp = [...conversation_data, msg];
       setConversation_data(temp);
@@ -38,15 +41,18 @@ function Home() {
         conversation_data[conversation_data.length - 1].file) &&
       conversation_data[conversation_data.length - 1].role === "user"
     ) {
-      console.log("Hi", conversation_data);
       const msg = conversation_data[conversation_data.length - 1];
 
       // Function to get response from a prompt
       async function getResponse(prompt) {
         const response = await fetch(`${BACKEND_URL}/chat`, {
           method: "POST",
-          body: JSON.stringify({ prompt: prompt }),
+          body: JSON.stringify({
+            prompt: prompt,
+            sessionToken: sessionStorage.getItem("sessionToken"),
+          }),
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
         });
 
         const result = await response.json();

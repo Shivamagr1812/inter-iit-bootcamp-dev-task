@@ -4,10 +4,10 @@ const User = require("../models/user.model");
 
 const handleSignup = (req, res) => {
   console.log("Signing up...");
-  const { username, email, password } = req.body;
+  const { name, email, password } = req.body;
 
   // If required credentials not present
-  if (!username || !email || !password) {
+  if (!name || !email || !password) {
     return res.status(400).json({ msg: "Credentials required" });
   }
 
@@ -19,7 +19,7 @@ const handleSignup = (req, res) => {
 
     // Create User with provided credentials
     await User.create({
-      username,
+      name,
       email,
       password: hash,
     })
@@ -80,19 +80,4 @@ const handleLogin = async (req, res) => {
   }
 };
 
-const handleLogout = (req, res) => {
-  console.log("Logging out...");
-  const authToken = req.cookies.authToken;
-
-  // authToken not found
-  if (!authToken) {
-    return res.status(400).json({ msg: "You are not logged in" });
-  }
-  // Logout User
-  else {
-    res.clearCookie("authToken");
-    return res.status(200).json({ msg: "Logged out successfully" });
-  }
-};
-
-module.exports = { handleSignup, handleLogin, handleLogout };
+module.exports = { handleSignup, handleLogin };
