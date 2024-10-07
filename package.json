@@ -1,0 +1,23 @@
+{
+     "name": "gpt4-app",
+     "version": "1.0.0",
+     "private": true,
+     "scripts": {
+          "start": "concurrently \"npm run server\" \"npm run client\"",
+          "server": "cd server && npm install && nodemon server.js",
+          "client": "cd client && npm install && npm start"
+     },
+     "dependencies": {
+          "@google/generative-ai": "^0.21.0",
+          "concurrently": "^7.0.0",
+          "dotenv": "^16.4.5",
+          "express": "^4.21.0",
+          "mongod": "^2.0.0",
+          "mongodb": "^6.9.0",
+          "mongoose": "^8.7.0",
+          "nodeman": "^1.1.2",
+          "nodemon": "^3.1.7",
+          "prismjs": "^1.29.0",
+          "react-router-dom": "^6.26.2"
+     }
+}

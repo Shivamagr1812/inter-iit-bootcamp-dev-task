@@ -1,0 +1,77 @@
+/* Container for the login section */
+section {
+     display: flex;
+     flex-direction: column;
+     align-items: center; /* Center items horizontally */
+     justify-content: center; /* Center items vertically */
+     height: 100vh; /* Full viewport height */
+     margin-top: -80px;
+ }
+ 
+ /* Title style */
+ h1 {
+    color: #ffffff;
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-right: auto;
+  }
+ 
+ /* Input label style */
+ label {
+     margin-bottom: 10px; /* Space below labels */
+     color: #c4c4c4; /* Slightly lighter text color */
+     font-weight: bold; /* Bold labels */
+ }
+ 
+ /* Input field styles */
+ input {
+     font-size: medium;
+     padding: 10px; /* Padding inside input fields */
+     margin-bottom: 20px; /* Space below input fields */
+     border: 1px solid #ccc; /* Light border color */
+     border-radius: 5px; /* Rounded corners */
+     width: 100%; /* Full width */
+     max-width: 400px; /* Max width for the input fields */
+     box-sizing: border-box; /* Include padding and border in width */
+ }
+ 
+ /* Button styles */
+ button {
+     padding: 10px 15px; /* Padding inside the button */
+     border: none; /* Remove border */
+     border-radius: 5px; /* Rounded corners */
+     background-color: #007bff; /* Bootstrap primary color */
+     color: white; /* White text color */
+     cursor: pointer; /* Pointer cursor on hover */
+     font-size: 16px; /* Font size */
+     width: 100%; /* Full width */
+     max-width: 400px; /* Max width for the button */
+ }
+ 
+ /* Button hover effect */
+ button:hover {
+     background-color: #0056b3; /* Darker shade on hover */
+ }
+ 
+ /* Error message style */
+ .errmsg {
+     color: red; /* Red text for error messages */
+     margin-bottom: 10px; /* Space below error messages */
+ }
+ 
+ /* Offscreen class for hidden elements */
+ .offscreen {
+     position: absolute; /* Take it offscreen */
+     left: -9999px; /* Move it offscreen */
+ }
+ 
+ /* Link style */
+ .line a {
+     color: #007bff; /* Link color */
+     text-decoration: none; /* Remove underline */
+ }
+ 
+ .line a:hover {
+     text-decoration: underline; /* Underline on hover */
+ }
+ 
