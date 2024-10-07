@@ -1,0 +1,483 @@
+/* styles.css */
+/* Register.css */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f2f5;
+}
+
+.register-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.register-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.redirect-text {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.redirect-text a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.redirect-text a:hover {
+  text-decoration: underline;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: #007bff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .navbar-logo h2 {
+    margin: 0;
+  }
+  
+  .navbar-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-links li {
+    display: inline;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+
+  .navbar-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .dashboard {
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+  }
+  
+  .add-new-chat {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .add-new-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .previous-chat-list {
+    margin: 20px 0;
+  }
+  
+  .chat-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .chat-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+  }
+  
+  .chat-title {
+    color: #007bff;
+    font-size: 18px;
+  }
+  
+  .chat-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .feedback-button, .start-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Light background for better contrast */
+}
+
+.chat-page {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  background-color: #ffffff; /* White background for a clean look */
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.sidebar h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px 15px;
+  background-color: #f4f4f4;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow */
+}
+
+.sidebar li:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+/* Chat Area Styling */
+.chat-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow for depth */
+}
+
+.selected-chat {
+  margin-bottom: 25px;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.selected-chat h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.selected-chat p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Chat Response Styling */
+.chat-response {
+  flex-grow: 1;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+/* Input Area Styling */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between textarea and buttons */
+}
+
+.input-box {
+  width: 100%;
+  min-height: 80px;
+  max-height: 200px;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical; /* Allow vertical resizing */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow */
+}
+
+.input-buttons {
+  display: flex;
+  gap: 10px; /* Spacing between buttons */
+}
+
+.input-buttons button {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.input-buttons button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.input-buttons button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Save Chat Button */
+.save-chat-button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.save-chat-button:hover {
+  background-color: #1e7e34;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.save-chat-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Transcript Styling */
+.transcript {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 6px;
+  font-style: italic;
+  color: #555;
+}
+
+/* General Button Styling */
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+  
+
+  .file-upload-page {
+    display: flex;
+  }
+  
+  .upload-area {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  .upload-buttons {
+    margin-top: 10px;
+  }
+  
+  .response-area {
+    margin-top: 20px;
+  }
+
+
+  /* Login.css */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f2f5;
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.login-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.redirect-text {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.redirect-text a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.redirect-text a:hover {
+  text-decoration: underline;
+}
+
+  
+  
+  
