@@ -83,7 +83,7 @@ h1 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 15px;
+  height: 100%;
 }
 
 .button:disabled {
@@ -93,4 +93,42 @@ h1 {
 
 .button:hover:enabled {
   background-color: #0056b3;
+}
+
+.ask{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height:fit-content;
+  gap:30px;
+  height: 40px;
+  align-items: center;
+  padding:20px;
+}
+
+.ask .voice-button{
+  color: white;
+  background-color: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:5px 10px;
+  height: 100%;
+
+}
+
+.signin{
+  transform: translateX(-20vw);
+}
+.logout{
+  width:100px;
+  transform: translateX(-40vw);
+  height:30px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #1e1e1e;
+  border: 1px solid white;
+  color: white;
 }
