@@ -1,0 +1,23 @@
+/* Specific styles for ChatMessage component text */
+  .chat-message {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    width: 45vw;
+    word-wrap: break-word; /* Break long words to avoid overflow */
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+    color: #e3d7d7; /* Color for the text inside ChatMessage */
+  }
+
+  .chat-message .language-cpp {
+  white-space: pre-wrap;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  }
+
+  .chat-message .response-content{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
