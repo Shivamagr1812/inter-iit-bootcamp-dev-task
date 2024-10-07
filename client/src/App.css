@@ -1,5 +1,28 @@
 /* src/App.css */
-body {
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.markdown-body pre code {
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px;
+  white-space: pre-wrap;
+}
+
+.markdown-body blockquote {
+  border-left: 4px solid #ddd;
+  margin-left: 0;
+  padding-left: 1em;
+  color: #999;
+}
+
+
+/* body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
@@ -93,4 +116,4 @@ h1 {
 
 .button:hover:enabled {
   background-color: #0056b3;
-}
+} */
