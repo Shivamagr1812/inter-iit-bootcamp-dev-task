@@ -34,10 +34,10 @@ async function chatWithGeminiController(req, res) {
 
     try {
         if (req.file) {
-            LLMTextResponse = getGeminiResponseForFile(req.file.path, finalStringQuery);
+            LLMTextResponse = await getGeminiResponseForFile(req.file.path, finalStringQuery);
         }
         else {
-            LLMTextResponse = getGeminiResponseForText(finalStringQuery);
+            LLMTextResponse = await getGeminiResponseForText(finalStringQuery);
         }
     }
     catch (error) {
