@@ -1,22 +1,67 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-require("dotenv").config();
+require("dotenv").config(); 
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const https = require("https")
 
-// Initialize Express app
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// POST endpoint to handle chat
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
 app.post("/chat", async (req, res) => {
-  // TODO: Implement the chat functionality
+  try {
+    const question = req.body.question; 
+    console.log(req.body);
+    
+    if (!question) {
+      return res.status(400).json({ error: "Question is required" });
+    }
+
+    //  prompt directly as a string
+    const result = await model.generateContent(question);
+    
+    
+    const answer = result.response.text(); 
+    res.json({ reply: answer }); 
+  } catch (error) {
+    console.error("Error generating content:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
 });
 
-// GET endpoint to handle chat
-app.get("/stream", async (req, res) => {
-  // TODO: Stream the response back to the client
+// Streaming response
+app.get('/stream-chat', async (req, res) => {
+  try {
+    const question = req.query.question; 
+
+    if (!question) {
+      return res.status(400).json({ error: 'Question is required' });
+    }
+
+    
+    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader('Transfer-Encoding', 'chunked');
+
+    const result = await model.generateContent(question);
+
+    const streamResponse = result.response.text().split(' ');
+    for (let i = 0; i < streamResponse.length; i++) {
+      res.write(streamResponse[i]);
+      res.write(' ');
+      await new Promise((resolve) => setTimeout(resolve, 200)); 
+    }
+
+    res.end();
+  } catch (error) {
+    console.error('Error during streaming:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
+
 
 // Start the server
 const PORT = process.env.PORT || 5000;
