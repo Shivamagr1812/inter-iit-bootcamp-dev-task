@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 // create a context
 const AuthContext = createContext();
 
@@ -25,10 +27,30 @@ export const AuthProvider = ({ children }) => {
   // logout function
   const logout = () => {
     setIsLoggedIn(false);
-
     setUser(null);
     localStorage.removeItem("user");
     sessionStorage.removeItem("sessionToken");
+
+    const handleLogout = async () => {
+      try {
+        const response = await fetch(`${BACKEND_URL}/auth/logout`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+
+          console.log(result);
+        } else {
+          console.log("File upload failed");
+        }
+      } catch (error) {
+        console.log("Network error:", error);
+      }
+    };
+
+    handleLogout();
   };
 
   // check if user already logged in when page loads

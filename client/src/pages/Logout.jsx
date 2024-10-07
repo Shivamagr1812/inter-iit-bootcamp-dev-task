@@ -24,8 +24,8 @@ function Logout() {
   }, [count]);
 
   return (
-    <div className="container w-screen h-screen flex justify-center items-center bg-gray-800">
-      <div className="m-auto flex flex-col items-center gap-5 font-poppins text-gray-100 font-light">
+    <div className="w-screen h-screen flex justify-center items-center bg-[#131921]">
+      <div className="m-auto flex flex-col items-center gap-5 font-poppins text-gray-300 font-light">
         <p className="">Logged out successfully</p>
         <p>Redirecting to home page in {count} sec.</p>
       </div>

@@ -64,9 +64,12 @@ function Sidebar({ setConversation }) {
 
   return isLoggedIn ? (
     <div
-      className="min- h-screen fixed top-0 duration-[450ms] bg-gray-800 text-gray-300 text-2xl font-poppins 
+      className="h-screen fixed top-0 duration -[450ms] bg-gray-800 text-gray-300 text-2xl font-poppins 
       z-[2000]"
-      style={{ width: navOpen ? navWidth.max : navWidth.min }}
+      style={{
+        width: navOpen ? navWidth.max : navWidth.min,
+        height: navOpen ? "100%" : "55px",
+      }}
       ref={sidebarRef}
     >
       <div
@@ -77,10 +80,10 @@ function Sidebar({ setConversation }) {
             : { backgroundColor: "#131921" }
         }
       >
-        <div className="flex gap- 2 bg-[#0d1117] w-full py-2.8 h-[55px] text-4xl items-center justify-center cursor-pointer">
+        <div className="flex gap-2 bg-[#0d1117] w-full py-2.8 h-[55px] text-4xl items-center justify-center cursor-pointer">
           {navOpen ? (
             <div>
-              <RiEdgeNewLine />
+              <RiEdgeNewLine className="text-3xl" />
             </div>
           ) : (
             <div className="text-2xl" onClick={() => setNavOpen(true)}>
@@ -88,7 +91,7 @@ function Sidebar({ setConversation }) {
             </div>
           )}
           <p
-            className="text-2xl font-sans font-semibold"
+            className="text-2xl font-sans"
             style={
               navOpen
                 ? { scale: "1", position: "relative" }
@@ -99,7 +102,7 @@ function Sidebar({ setConversation }) {
           </p>
         </div>
         {navOpen ? (
-          <div className="duration-[450ms]">
+          <div>
             <div className="border-b border-white">
               <p className="px-4 py-3">Chat History</p>
             </div>

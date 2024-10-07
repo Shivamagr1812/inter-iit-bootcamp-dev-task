@@ -104,7 +104,7 @@ function InputField({ addConversation }) {
           </p>
           <MdKeyboardVoice className="hover:scale-110" />
         </div>
-        <div className="absolute left-6 top-4 text-xl cursor-pointer text-gray-300">
+        <div className="absolute left-4 md:left-6 top-4 text-xl cursor-pointer text-gray-300">
           <div
             className="absolute w-[250px] h-fit py-3 bottom-10 rounded-lg bg-gray-700"
             style={
@@ -134,13 +134,13 @@ function InputField({ addConversation }) {
           type="text"
           name="input"
           placeholder="Ask something..."
-          className="w-full px-7 pl-16 py-3 text-lg outline-none rounded-full text-gray-200 bg-[#19212c] shadow-lg"
+          className="w-full px-12 md:px-16 py-3 text-lg outline-none rounded-full text-gray-200 bg-[#19212c] shadow-lg"
           value={msg.content}
           onChange={(e) => setMsg({ ...msg, content: e.target.value })}
           onKeyDown={(e) => (e.key === "Enter" ? handleSend(msg) : null)}
         />
         <div
-          className="absolute flex items-center justify-center p-1 right-5 top-[27px] -translate-y-[50%] text-gray-300 cursor-pointer text-2xl"
+          className="absolute flex items-center justify-center p-1 right-3 md:right-5 top-[27px] -translate-y-[50%] text-gray-300 cursor-pointer text-2xl"
           onClick={() => handleSend(msg)}
         >
           <CiLocationArrow1 className="hover:text-gray-500" />

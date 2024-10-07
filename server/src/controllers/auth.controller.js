@@ -80,4 +80,17 @@ const handleLogin = async (req, res) => {
   }
 };
 
-module.exports = { handleSignup, handleLogin };
+const handleLogout = (req, res) => {
+  const authToken = req.cookies.authToken;
+
+  if (!authToken) {
+    return res.status(400).json({ msg: "Login first to logout" });
+  }
+
+  res
+    .clearCookie("authToken")
+    .status(200)
+    .json({ msg: "Logged out successfully" });
+};
+
+module.exports = { handleSignup, handleLogin, handleLogout };
