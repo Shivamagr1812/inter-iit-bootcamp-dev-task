@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ConversationSection from "../components/ConversationSection";
 import InputField from "../components/InputField";
-import { useAuth } from "../context/LoginState";
+import { useAuth } from "../context/AuthContext";
 import Sidebar from "../components/Sidebar";
 
 function Home() {
@@ -69,7 +69,7 @@ function Home() {
             content: convo,
           };
           addConversation(temp);
-        } catch (error) {
+        } catch (err) {
           console.log("Network Error");
         }
       }

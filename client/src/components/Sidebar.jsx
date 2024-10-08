@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useAuth } from "../context/LoginState";
+import { useAuth } from "../context/AuthContext";
 import { RiEdgeNewLine } from "react-icons/ri";
 import { RiMenu2Line } from "react-icons/ri";
 
@@ -54,7 +54,7 @@ function Sidebar({ setConversation }) {
 
         setChatHistory(temp);
         console.log(temp);
-      } catch (error) {
+      } catch (err) {
         console.log("Network Error in fetching chatHistory");
       }
     };

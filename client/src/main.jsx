@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/LoginState.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import "./index.css";
 // Import pages
 import HomePage from "./pages/HomePage.jsx";

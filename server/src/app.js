@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require("cors");
 require("dotenv").config();
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 // Access routes
@@ -25,11 +25,11 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/auth", authRoute);
 app.use("/chat", chatRoute);
+app.use("/user", userRoute);
 app.get("/test", (req, res) => {
   console.log("Test route is working fine");
-  res.json({ msg: "This is a test response from server" });
+  res.status(200).json({ msg: "This is a test response from server" });
 });
-app.use("/user", userRoute);
 // app.use("/stream", streamRoute);
 
 module.exports = app;

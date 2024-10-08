@@ -1,6 +1,6 @@
+require("dotenv").config();
 const app = require("./src/app");
 const dbConnect = require("./src/db/db");
-require("dotenv").config();
 
 // Connect database
 dbConnect(process.env.DB_URL)
@@ -14,5 +14,5 @@ dbConnect(process.env.DB_URL)
 // Start the Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server started successfully at : http://localhost:${PORT}`);
+  console.log(`Server started successfully at PORT: ${PORT}`);
 });
