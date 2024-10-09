@@ -281,6 +281,35 @@ app.post('/api/audio', upload.single('files'), async (req, res) => {
 });
 
 
+app.delete('/api/chat', async (req, res) => {
+  const { username } = req.body;
+
+  if (!username) {
+    return res.status(400).json({ error: 'Username is required' });
+  }
+
+  try {
+    const foundUser = await User.findOne({ username });
+    if (!foundUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+   
+    const deleteResult = await ChatM.deleteMany({ username: foundUser.username });
+
+    if (deleteResult.deletedCount === 0) {
+      return res.status(404).json({ error: 'No chat history found to delete' });
+    }
+
+    res.status(200).json({ message: `Successfully deleted ${deleteResult.deletedCount} chat(s)` });
+
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete chat history' });
+  }
+});
+
+
+
 
 app.listen(5000, () => {
   console.log(`Server running on port 5000`);
