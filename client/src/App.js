@@ -1,47 +1,30 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Chat from './Components/Chat';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
+import Navbar from './Components/Navbar';
 
 function App() {
-  const [question, setQuestion] = useState('');
-  const [conversation, setConversation] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const chatEndRef = useRef(null);
+  const [username, setUsername] = useState(null);
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-
-  // Function to submit question to the server
-  const askQuestion = async () => {
-    // TODO: Implement the function to send the question to the server
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    setUsername(null);
   };
 
   return (
-    <div className="container">
-      <h1>Chat with me</h1>
-
-      {/* Chat container */}
-      <div className="chat-container">
-        {conversation.map((msg, index) => (
-          <div key={index} className={`message ${msg.role}`}>
-            <strong>{msg.role === 'user' ? 'You' : 'GPT-4'}:</strong>
-            <span>{msg.content}</span>
-          </div>
-        ))}
-        <div ref={chatEndRef} />
+    <Router>
+      <Navbar username={username} handleLogout={handleLogout} />
+      <div>
+        <Routes>
+          <Route path="/login" element={<Login setUsername={setUsername} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={username ? <Chat username={username} /> : <Navigate to="/login" />} />
+        </Routes>
       </div>
-
-      {/* Input section */}
-      <textarea
-        className="textarea"
-        rows="4"
-        placeholder="Ask a question..."
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-      />
-      <br />
-      <button className="button" onClick={askQuestion} disabled={loading}>
-        {loading ? 'Loading...' : 'Ask'}
-      </button>
-    </div>
+    </Router>
   );
 }
 

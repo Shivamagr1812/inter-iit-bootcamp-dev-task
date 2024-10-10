@@ -1,0 +1,74 @@
+h2 {
+    color: #DDE6ED; /* Heading color */
+    font-size: 48px; /* Increased font size */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+form {
+    background-color: rgba(39, 55, 77, 0.9); /* Slightly transparent */
+    border-radius: 16px; /* Increased border radius */
+    padding: 40px; /* Increased padding */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px); /* Enhanced blur effect */
+    transition: transform 0.3s ease;
+    width: 400px; /* Increased width of container */
+}
+
+form:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px; /* Increased padding */
+    margin: 12px 0; /* Increased margin */
+    border: none;
+    border-radius: 10px; /* Updated border radius */
+    background-color: #526D82; /* Input background color */
+    color: #DDE6ED; /* Input text color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background-color: #9DB2BF; /* Lighter background on focus */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    background-color: #27374D; /* Button background color */
+    color: #DDE6ED; /* Button text color */
+    padding: 14px; /* Increased padding */
+    font-size: 20px; /* Increased font size */
+    font-weight: 600;
+    border: none;
+    border-radius: 10px; /* Updated border radius */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #1A2A3E; /* Darker shade on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+
+p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.error {
+    color: #ff3d3d;
+}
+
+.success {
+    color: #28a745;
+}
