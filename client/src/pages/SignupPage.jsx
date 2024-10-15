@@ -114,7 +114,7 @@ function SignupPage() {
               >
                 Sign in
               </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+              <p className="text-sm font-light text-gray-400">
                 Already have an account?{" "}
                 <span
                   className="font-medium hover:underline text-primary-500 cursor-pointer"
