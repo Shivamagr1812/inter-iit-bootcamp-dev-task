@@ -23,7 +23,7 @@ function Navbar() {
           {isLoggedIn ? (
             <div className="flex flex-col justify-center relative">
               <p
-                className="cursor-pointer hover:text-gray-200"
+                className="max-w-20 overflow-hidden cursor-pointer hover:text-gray-400 duration-75"
                 onClick={() => setisLogoutActive((prev) => !prev)}
               >
                 Hi, {user}

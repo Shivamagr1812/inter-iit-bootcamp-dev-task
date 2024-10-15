@@ -1,74 +1,77 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+// Import components
 import Navbar from "../components/Navbar";
 import ConversationSection from "../components/ConversationSection";
 import InputField from "../components/InputField";
-import { useAuth } from "../context/AuthContext";
 import Sidebar from "../components/Sidebar";
 
 function Home() {
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const { isLoggedIn } = useAuth();
 
-  const [conversation_data, setConversation_data] = useState([
+  const [conversation, setConversation] = useState([
     {
       role: "ai",
       content: "How may I help you today ?",
     },
   ]);
 
-  // Function to add 'msg' to 'conversation_data'
+  // Function to add 'msg' to 'conversation'
   function addConversation(msg) {
     let temp = [];
     // If user has given some prompt with/without file
-    console.log(msg);
     if (msg.content.length > 0) {
-      temp = [...conversation_data, msg];
-      setConversation_data(temp);
+      temp = [...conversation, msg];
+      setConversation(temp);
     }
     // If user only uploaded file without prompt
     else if (msg.file) {
       temp = [
-        ...conversation_data,
+        ...conversation,
         { ...msg, content: "Getting response for uploaded file" },
       ];
-      setConversation_data(temp);
+      setConversation(temp);
     }
   }
-
-  function setConversation(convo) {
-    setConversation_data(convo);
+  // Function to set conversation
+  function setConversationData(convo) {
+    setConversation(convo);
   }
 
   // To get backend response
   useEffect(() => {
-    if (
-      (conversation_data[conversation_data.length - 1].content ||
-        conversation_data[conversation_data.length - 1].file) &&
-      conversation_data[conversation_data.length - 1].role === "user"
-    ) {
-      const msg = conversation_data[conversation_data.length - 1];
+    const msg = conversation[conversation.length - 1];
 
+    if ((msg.content || msg.file) && msg.role === "user") {
       // Function to get response from a prompt
       async function getResponse(prompt) {
         try {
-          const response = await fetch(`${BACKEND_URL}/chat`, {
-            method: "POST",
-            body: JSON.stringify({
-              prompt: prompt,
-              sessionToken: sessionStorage.getItem("sessionToken"),
-            }),
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-          });
+          const response = await fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/chat`,
+            {
+              method: "POST",
+              body: JSON.stringify({
+                prompt: prompt,
+                sessionToken: sessionStorage.getItem("sessionToken"),
+              }),
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+            }
+          );
 
-          const result = await response.json();
-          const convo = await result.response;
+          if (response.ok) {
+            const result = await response.json();
+            const convo = await result.response;
 
-          const temp = {
-            role: "ai",
-            content: convo,
-          };
-          addConversation(temp);
+            const temp = {
+              role: "ai",
+              content: convo,
+            };
+
+            addConversation(temp);
+          } else {
+            console.log("Propmt sending failed");
+          }
         } catch (err) {
           console.log("Network Error");
         }
@@ -82,11 +85,14 @@ function Home() {
 
         try {
           // Send the form data to backend
-          const response = await fetch(`${BACKEND_URL}/chat/file`, {
-            method: "POST",
-            body: formData,
-            credentials: "include",
-          });
+          const response = await fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/chat/file`,
+            {
+              method: "POST",
+              body: formData,
+              credentials: "include",
+            }
+          );
 
           if (response.ok) {
             console.log("File uploaded successfully:");
@@ -113,13 +119,15 @@ function Home() {
         getResponse(msg.content);
       }
     }
-  }, [conversation_data]);
+  }, [conversation]);
 
   return (
     <div className="w-[100%] h-screen flex flex-col">
-      <Sidebar setConversation={setConversation} />
+      {isLoggedIn ? (
+        <Sidebar setConversationData={setConversationData} />
+      ) : null}
       <Navbar />
-      <ConversationSection conversation_data={conversation_data} />
+      <ConversationSection conversation={conversation} />
       <InputField addConversation={addConversation} />
     </div>
   );
