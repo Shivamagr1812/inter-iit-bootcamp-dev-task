@@ -52,7 +52,7 @@ function Sidebar({ setConversationData }) {
           temp.push(message);
         });
 
-        setChatHistory(temp);
+        setChatHistory(temp.reverse());
         console.log(temp);
       } catch (err) {
         console.log("Network Error in fetching chatHistory");
