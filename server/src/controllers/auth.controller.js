@@ -89,7 +89,6 @@ const handleLogin = async (req, res) => {
         secure: true,
         sameSite: "None",
         maxAge: 24 * 60 * 60 * 1000,
-        domain: ".gptee-steel.vercel.app",
       })
       .status(200)
       .json({ msg: "Logged in successfully" });
