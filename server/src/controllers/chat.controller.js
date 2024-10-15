@@ -1,6 +1,6 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { GoogleAIFileManager } = require("@google/generative-ai/server");
-const fs = require("fs");
+const { Buffer } = require("buffer");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const Chat = require("../models/chat.model");
@@ -103,28 +103,35 @@ const handleChatWithFile = async (req, res) => {
   const { prompt, sessionToken } = req.body;
   const authToken = req.cookies.authToken;
   const file = req.file;
+  let uploadResult = null;
+
+  if (!file) {
+    console.log("No file provided");
+    return res.status(400).json({ msg: "No file provided" });
+  }
 
   const fileManager = new GoogleAIFileManager(process.env.GEMINI_AI_API_KEY);
 
-  // Upload file to API Server
-  const uploadResult = await fileManager.uploadFile(`${file.path}`, {
-    mimeType: file.mimetype,
-    displayName: file.originalname,
-  });
-  // Check if file uploaded successfully
-  console.log(
-    `Uploaded file ${uploadResult.file.displayName} as: ${uploadResult.file.uri}`
-  );
+  try {
+    console.log("Uploading file to API Server");
+
+    // Upload file to API Server
+    uploadResult = await fileManager.uploadFile(file.path, {
+      mimeType: file.mimetype,
+      displayName: file.originalname,
+    });
+    // Check if file uploaded successfully
+    console.log(
+      `Uploaded file ${uploadResult.file.displayName} as: ${uploadResult.file.uri}`
+    );
+  } catch (err) {
+    console.log("Error uploading file:", err);
+    return res
+      .status(500)
+      .json({ msg: "File upload failed", error: err.message });
+  }
 
   // Delete file from local storage after uploading
-  fs.unlink(file.path, (err) => {
-    if (err) {
-      console.log("Error deleting file:", err);
-      return res.status(500).json({ msg: "Server error in deleting file" });
-    } else {
-      console.log("File deleted successfully");
-    }
-  });
 
   // Get response for file + prompt
   const model = new GoogleGenerativeAI(

@@ -1,5 +1,7 @@
 const express = require("express");
 const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../cloudinary/cloudinaryConfig");
 const path = require("path");
 const {
   handleChat,
@@ -9,7 +11,7 @@ const {
 const router = express.Router();
 
 // Confing multer for storing file
-const storage = multer.diskStorage({
+const storage = new multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/");
   },
@@ -20,6 +22,19 @@ const storage = multer.diskStorage({
     cb(null, `${name}-${Date.now()}${ext}`);
   },
 });
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: (req, file) => {
+//     const ext = path.extname(file.originalname);
+//     const name = path.basename(file.originalname, ext);
+
+//     return {
+//       folder: "uploads",
+//       public_id: `${name}-${Date.now()}`,
+//       allowed_formats: ["jpg", "png", "jpeg", "pdf"],
+//     };
+//   },
+// });
 
 const upload = multer({ storage: storage });
 
