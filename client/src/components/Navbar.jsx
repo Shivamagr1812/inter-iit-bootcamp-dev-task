@@ -9,7 +9,10 @@ function Navbar() {
 
   return (
     <div className="w-[100%] h-[55px] fixed top-0 flex items-center justify-between bg-[#0d1117] z-[1000]">
-      <div className="md:hidden"></div>
+      <div
+        style={isLoggedIn ? { display: "inline" } : { display: "none" }}
+        className="md:hidden"
+      ></div>
       <div className="flex items-center justify-center px-8 md:px-20 text-2xl text-gray-300">
         <p
           className="flex items-center justify-center cursor-pointer"
