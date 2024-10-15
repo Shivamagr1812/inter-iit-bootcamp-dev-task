@@ -16,7 +16,6 @@ const corsOptions = {
   origin: process.env.CLIENT_URL,
   method: "GET, POST, PUT, PATCH, DELETE",
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions));
 app.use(cookieParser());
