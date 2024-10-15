@@ -87,9 +87,8 @@ const handleLogin = async (req, res) => {
       .cookie("authToken", authToken, {
         httpOnly: true,
         secure: true,
-        sameSite: "None",
+        sameSite: "lax",
         maxAge: 24 * 60 * 60 * 1000,
-        domain: ".gptee.onrender.com",
       })
       .status(200)
       .json({ msg: "Logged in successfully" });
