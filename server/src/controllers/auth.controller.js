@@ -86,8 +86,9 @@ const handleLogin = async (req, res) => {
     return res
       .cookie("authToken", authToken, {
         httpOnly: true,
-        secure: false,
+        secure: true,
         sameSite: "lax",
+        domain: "gptee-steel.vercel.app",
         maxAge: 24 * 60 * 60 * 1000,
       })
       .status(200)
