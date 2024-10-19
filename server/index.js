@@ -1,25 +1,18 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
 require("dotenv").config();
+const app = require("./src/app");
+const dbConnect = require("./src/db/db");
 
-// Initialize Express app
-const app = express();
-app.use(cors());
-app.use(bodyParser.json());
+// Connect database
+dbConnect(process.env.DB_URL)
+  .then(() => {
+    console.log("MongoDB connected successfully");
+  })
+  .catch((err) => {
+    console.log("MongoDB Connection Error : ", err);
+  });
 
-// POST endpoint to handle chat
-app.post("/chat", async (req, res) => {
-  // TODO: Implement the chat functionality
-});
-
-// GET endpoint to handle chat
-app.get("/stream", async (req, res) => {
-  // TODO: Stream the response back to the client
-});
-
-// Start the server
+// Start the Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server started successfully at PORT: ${PORT}`);
 });
