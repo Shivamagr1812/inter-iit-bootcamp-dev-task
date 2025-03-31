@@ -1,0 +1,18 @@
+.voice-toggle-btn {
+     position: absolute; /* Position it absolutely */
+     background: transparent; /* Remove background */
+     cursor: pointer; /* Pointer cursor */
+     transition: color 0.3s; /* Smooth color transition */
+     padding: 0; /* Remove padding */
+}
+.voice-toggle-btn:hover {
+     opacity: 0.8; /* Add hover effect */
+}
+
+.attach-voice-icon {
+     position: absolute;
+     left: 390px;
+     top: -50px;
+     font-size: 20px;
+     color: #666;
+}
